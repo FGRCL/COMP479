@@ -10,15 +10,15 @@ Write you code within the "WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv" code stub. Var
 for example to show what is expected to be returned. You CAN modify them according to your preference.
 """
 
+from os import listdir
+from os.path import isfile
 
 def block_reader(path):
-    # Delete this block first
-    raise NotImplementedError("Please implement your solution in block_reader function in solutions.py")
-    # ##############
-
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
-    reuters_file_content = 'your file content should be here'
-    yield reuters_file_content
+    for file in [entry for entry in listdir(path) if entry[-4:] == '.sgm']:
+        filePath = '{}/{}'.format(path, file)
+        with open(filePath, 'r', encoding='latin-1') as f:
+            yield f.read()
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 
 
