@@ -23,13 +23,19 @@ def block_reader(path):
 
 
 def block_document_segmenter(INPUT_STRUCTURE):
-    # Delete this block first
-    raise NotImplementedError("Please implement your solution in block_document_segmenter function in solutions.py")
-    # ##############
-
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
-    document_text = 'your document content should be here'
-    yield document_text
+    for file in INPUT_STRUCTURE:
+        remainingContent = file
+        startIndex = remainingContent.find('<REUTERS')
+        stopIndex = remainingContent.find('<REUTERS', startIndex+1)
+        while startIndex != -1:
+            if(stopIndex == -1):
+                yield remainingContent[startIndex:]
+            else:
+                yield remainingContent[startIndex: stopIndex-1]
+            remainingContent = remainingContent[stopIndex:]
+            startIndex = remainingContent.find('<REUTERS')
+            stopIndex = remainingContent.find('<REUTERS', startIndex+1)
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 
 
