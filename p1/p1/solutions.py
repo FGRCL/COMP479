@@ -12,6 +12,7 @@ for example to show what is expected to be returned. You CAN modify them accordi
 
 from os import listdir
 from os.path import isfile
+from bs4 import BeautifulSoup
 
 def block_reader(path):
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
@@ -40,15 +41,14 @@ def block_document_segmenter(INPUT_STRUCTURE):
 
 
 def block_extractor(INPUT_STRUCTURE):
-    # Delete this block first
-    raise NotImplementedError("Please implement your solution in block_extractor function in solutions.py")
-    # ##############
-
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
-    content_dict = {"ID": 123, "TEXT": "news text"}  # Sample dictionary structure of output
-    yield content_dict
+    docId = 1
+    for document in INPUT_STRUCTURE:
+        root = BeautifulSoup(document, "xml")
+        content = root.find('TEXT').text.replace('\n', '').replace('\\\"', '\"')
+        yield {"ID": docId, "TEXT": content}
+        docId += 1
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
-
 
 def block_tokenizer(INPUT_STRUCTURE):
     # Delete this block first
