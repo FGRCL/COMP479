@@ -17,7 +17,7 @@ def block_reader(path):
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
     for file in [entry for entry in listdir(path) if entry[-4:] == '.sgm']:
         filePath = '{}/{}'.format(path, file)
-        with open(filePath, 'r', errors = 'ignore') as f:
+        with open(filePath, 'r', encoding='latin-1') as f:
             yield f.read()
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 
