@@ -13,7 +13,6 @@ for example to show what is expected to be returned. You CAN modify them accordi
 from os import listdir
 from os.path import isfile
 from bs4 import BeautifulSoup
-import re
 
 def block_reader(path):
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
