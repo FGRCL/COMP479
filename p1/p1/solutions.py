@@ -17,11 +17,8 @@ def block_reader(path):
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
     for file in [entry for entry in listdir(path) if entry[-4:] == '.sgm']:
         filePath = '{}/{}'.format(path, file)
-        reuters_file_content = ''
-        with open(filePath, 'r', encoding='utf') as f:
-            for line in f:
-                reuters_file_content += line
-        yield reuters_file_content
+        with open(filePath, 'r', errors = 'ignore') as f:
+            yield f.read()
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 
 
