@@ -8,6 +8,7 @@ authors = ["FGRCL <35940434+FGRCL@users.noreply.github.com>"]
 python = "^3.8"
 beautifulsoup4 = "*"
 lxml = "*"
+nltk = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
