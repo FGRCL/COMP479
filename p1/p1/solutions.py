@@ -12,6 +12,8 @@ for example to show what is expected to be returned. You CAN modify them accordi
 
 from os import listdir
 from os.path import isfile
+from bs4 import BeautifulSoup
+import re
 
 def block_reader(path):
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
@@ -40,11 +42,14 @@ def block_document_segmenter(INPUT_STRUCTURE):
 
 
 def block_extractor(INPUT_STRUCTURE):
-    # Delete this block first
-    raise NotImplementedError("Please implement your solution in block_extractor function in solutions.py")
-    # ##############
-
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
+    for document in INPUT_STRUCTURE:
+        startIndex = document.find('<TEXT>')
+        stopIndex = document.find('</TEXT>', startIndex+1)
+        content = document[startIndex+6:stopIndex]
+        content = content.replace('<BODY>', '').replace('</BODY>', '').replace('<TITLE>').replace('</TITLE>', '').replace('</DATELINE>', '').replace('<DATELINE>', '')
+        content = re.sub(r'&#[0-9]*;', '', content)
+        print(content)
     content_dict = {"ID": 123, "TEXT": "news text"}  # Sample dictionary structure of output
     yield content_dict
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
