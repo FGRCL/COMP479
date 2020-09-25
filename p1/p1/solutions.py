@@ -13,6 +13,8 @@ for example to show what is expected to be returned. You CAN modify them accordi
 from os import listdir
 from os.path import isfile
 from bs4 import BeautifulSoup
+from tokenize import tokenize
+from nltk import word_tokenize
 
 def block_reader(path):
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
@@ -51,13 +53,10 @@ def block_extractor(INPUT_STRUCTURE):
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 
 def block_tokenizer(INPUT_STRUCTURE):
-    # Delete this block first
-    raise NotImplementedError("Please implement your solution in block_tokenizer function in solutions.py")
-    # ##############
-
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
-    token_tuple = ('id', 'token')  # Sample id, token tuple structure of output
-    yield token_tuple
+    for dictionnary in INPUT_STRUCTURE:
+        for token in word_tokenize(dictionnary['TEXT']):
+            yield (dictionnary['ID'], token)
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 
 
