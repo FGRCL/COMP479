@@ -23,7 +23,7 @@ def init_params():
 
     if type(init_params.args.stopwords) is str:
         common_check_path(init_params.args.stopwords)
-        init_params.args.input_file = open(init_params.args.input_file)
+        init_params.args.stopwords = open(init_params.args.stopwords)
 
     return init_params.args
 
