@@ -43,17 +43,13 @@ def block_document_segmenter(INPUT_STRUCTURE):
 
 def block_extractor(INPUT_STRUCTURE):
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
+    docId = 1
     for document in INPUT_STRUCTURE:
-        startIndex = document.find('<TEXT>')
-        stopIndex = document.find('</TEXT>', startIndex+1)
-        content = document[startIndex+6:stopIndex]
-        content = content.replace('<BODY>', '').replace('</BODY>', '').replace('<TITLE>').replace('</TITLE>', '').replace('</DATELINE>', '').replace('<DATELINE>', '')
-        content = re.sub(r'&#[0-9]*;', '', content)
-        print(content)
-    content_dict = {"ID": 123, "TEXT": "news text"}  # Sample dictionary structure of output
-    yield content_dict
+        root = BeautifulSoup(document, "xml")
+        content = root.find('TEXT').text.replace('\n', '').replace('\\\"', '\"')
+        yield {"ID": docId, "TEXT": content}
+        docId += 1
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
-
 
 def block_tokenizer(INPUT_STRUCTURE):
     # Delete this block first
