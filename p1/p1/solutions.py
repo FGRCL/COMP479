@@ -14,7 +14,7 @@ from os import listdir
 from os.path import isfile
 from bs4 import BeautifulSoup
 from tokenize import tokenize
-from nltk import word_tokenize
+from nltk import word_tokenize, PorterStemmer
 
 def block_reader(path):
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
@@ -61,13 +61,10 @@ def block_tokenizer(INPUT_STRUCTURE):
 
 
 def block_stemmer(INPUT_STRUCTURE):
-    # Delete this block first
-    raise NotImplementedError("Please implement your solution in block_stemmer function in solutions.py")
-    # ##############
-
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
-    token_tuple = ('id', 'token')  # Sample id, token tuple structure of output
-    yield token_tuple
+    porter = PorterStemmer()
+    for tup in INPUT_STRUCTURE:
+        yield(tup[0], porter.stem(tup[1]))
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 
 
