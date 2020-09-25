@@ -33,4 +33,4 @@ for reuters_file_content in solutions.block_reader(path):
     # Validating output format
     asserts.block_1_reader_validate(reuters_file_content)
     # Write results to stdout or file
-    asserts.output(reuters_file_content)
+    #asserts.output(reuters_file_content)
