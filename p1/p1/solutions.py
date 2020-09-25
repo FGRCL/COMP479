@@ -29,7 +29,6 @@ def block_document_segmenter(INPUT_STRUCTURE):
         startIndex = remainingContent.find('<REUTERS')
         stopIndex = remainingContent.find('<REUTERS', startIndex+1)
         while startIndex != -1:
-
             if(stopIndex == -1):
                 yield remainingContent[startIndex:]
             else:
