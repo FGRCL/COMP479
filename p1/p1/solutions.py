@@ -69,11 +69,11 @@ def block_stemmer(INPUT_STRUCTURE):
 
 
 def block_stopwords_removal(INPUT_STRUCTURE, stopwords):
-    # Delete this block first
-    raise NotImplementedError("Please implement your solution in block_stopwords_removal function in solutions.py")
-    # ##############
-
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
-    token_tuple = ('id', 'token')  # Sample id, token tuple structure of output
-    yield token_tuple
+    porter = PorterStemmer()
+    stemmedStopWords = [] if stopwords == None else [porter.stem(word) for word in stopwords]
+    for tup in INPUT_STRUCTURE:
+        if not tup[1] in stemmedStopWords:
+            yield(tup[0], tup[1])
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
+
