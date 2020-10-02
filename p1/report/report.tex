@@ -57,29 +57,27 @@ In the third step of the pipeline, we clean the documents by extract only the va
 \begin{minted}[tabsize=4]{python}
 def block_extractor(INPUT_STRUCTURE):
 	# WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
-	docId = 1
 	for document in INPUT_STRUCTURE:
 		root = BeautifulSoup(document, "xml")
+		docId = int(root.find('REUTERS')['NEWID'])
 		textRoot = root.find('TEXT')
 		if textRoot.has_attr('TYPE'):
 			if textRoot['TYPE'] == 'BRIEF':
 				content = textRoot.find('TITLE').text
 				yield {"ID": docId, "TEXT": content}
-				docId += 1
 		else:
 			content = textRoot.find('TITLE').text
 			content += textRoot.find('BODY').text
 			yield {"ID": docId, "TEXT": content}
-			docId += 1
 # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 \end{minted}
-This step requires a little bit more granularity in our approach than the other steps. This is why the BeautifulSoup library is used in this block. We start by parsing the document with XML using BeautifulSoup. Then, we need to figure out which type of text document we are dealing with to parse it properly. The type of document can be determined by the ``TYPE'' attribute of the ``TEXT'' tag. We use BeautifulSoup to retrieve the attribute and the tag. Three types of documents are relevant to us in this step:
+This step requires a little bit more granularity in our approach than the other steps. This is why the BeautifulSoup library is used in this block. We start by parsing the document with XML using BeautifulSoup. In a single line, we get the docID from the ``NEWID'' attribute of the ``REUTERS'' tag using BeautifulSoup. This ID will be used later on to construct the docID-text dictionaries. Then, we need to figure out which type of text document we are dealing with to parse it properly. The type of document can be determined by the ``TYPE'' attribute of the ``TEXT'' tag. We use BeautifulSoup to retrieve the attribute and the tag. Three types of documents are relevant to us in this step:
 \begin{itemize}
 	\item The type is ``UNPROC''. This type of stands for ``unprocessed''. These documents required are not valuable for indexing, therefore we want to ignore those documents altogether.
 	\item The type is ``BRIEF''. This type of document contains only a title and no actual article body. Therefore, we want to only retrieve the title of these documents
 	\item If the ``TEXT'' tag does not have a ``TYPE'' attribute, then it is a normal news article. We want to retrieve both the title and body of these documents.
 \end{itemize}
-In order to hand these three cases we use a series of simple \textit{if} statements. In the case of a brief new article we use BeautifulSoup to retrieve the ``TITLE'' tag then access the text property to retrieve its contents. Regular news document are similar, except we also retrieve and the contents of the ``BODY'' tag and concatenate it with the ``TITLE'' tag. We then create a dictionary containing the docID and the text and yield that dictionary. For the docID, we initialize a counter at the beginning of the process and increment it after processing a regular news document of a brief.
+In order to handle these three cases we use a series of simple \textit{if} statements. In the case of a brief new article we use BeautifulSoup to retrieve the ``TITLE'' tag then access the text property to retrieve its contents. Regular news document are similar, except we also retrieve and the contents of the ``BODY'' tag and concatenate it with the ``TITLE'' tag. We then create a docID-text dictionary and yield it.
 \paragraph{Block 4}
 For block 4, we further split the document text into words, in a process known as tokenization.
 \begin{minted}[tabsize=4]{python}

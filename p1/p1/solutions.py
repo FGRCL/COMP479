@@ -42,20 +42,18 @@ def block_document_segmenter(INPUT_STRUCTURE):
 
 def block_extractor(INPUT_STRUCTURE):
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
-    docId = 1
     for document in INPUT_STRUCTURE:
         root = BeautifulSoup(document, "xml")
+        docId = int(root.find('REUTERS')['NEWID'])
         textRoot = root.find('TEXT')
         if textRoot.has_attr('TYPE'):
             if textRoot['TYPE'] == 'BRIEF':
                 content = textRoot.find('TITLE').text
                 yield {"ID": docId, "TEXT": content}
-                docId += 1
         else:
             content = textRoot.find('TITLE').text
             content += textRoot.find('BODY').text
             yield {"ID": docId, "TEXT": content}
-            docId += 1
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 
 def block_tokenizer(INPUT_STRUCTURE):
