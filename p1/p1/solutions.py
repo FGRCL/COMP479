@@ -52,6 +52,7 @@ def block_extractor(INPUT_STRUCTURE):
                 yield {"ID": docId, "TEXT": content}
         else:
             content = textRoot.find('TITLE').text
+            content += " "
             content += textRoot.find('BODY').text
             yield {"ID": docId, "TEXT": content}
     # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^

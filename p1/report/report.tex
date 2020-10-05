@@ -28,7 +28,7 @@ def block_reader(path):
 				yield f.read()
 	# WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 \end{minted}
-In the first line we begin by creating a list of all the ``.sgm'' file names. In order to do so, we get the list of all files in the directory, then filter it by selecting the files that finish with ``.sgm''. When then iterate of that list. With each file we first create a path to the file, then open a the associated file and read it's full content while outputting it to the generator.
+In the first line we begin by creating a list of all the ``.sgm'' file names. In order to do so, we get the list of all files in the directory, then filter it by selecting the files that finish with ``.sgm''. When then iterate over that list. With each file we first create the full path to the file, then open that file, read it's full content, and yield it.
 
 \paragraph{Block 2}
 In block 2, we begin breaking down the corpus by splitting the file contents into separate documents, which contain news article.
@@ -49,7 +49,7 @@ def block_document_segmenter(INPUT_STRUCTURE):
 			stopIndex = remainingContent.find('<REUTERS', startIndex+1)
 	# WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 \end{minted}
-The documents are bounded by ``\textlangle REUTERS\textrangle'' XML tags, therefore we will use these to split the file's contents into individual documents. We start by finding the position in the file of the next and second next ``\textlangle REUTERS\textrangle'' tag. Since articles are right next to each other, we can get the position of the closing ``\textlangle/REUTERS\textrangle'' tag for the first opening tag using the second opening tag. Using these two positions, we take the sub-string containing a document and yield it. We then remove the everything that came before the document from the file string, allowing use to repeat the process to retrieve all documents efficiently. We repeat this process until no documents are left in the file as seen by the while loop condition. A special case occurs for the last document which is easily handled with an \textit{if} statement.
+The documents are bounded by ``\textlangle REUTERS\textrangle'' XML tags, therefore we will use these to split the file's contents into individual documents. We start by finding the position, in the file, of the next and second next ``\textlangle REUTERS\textrangle'' tag. Since articles are right next to each other, we can get the position of the closing ``\textlangle/REUTERS\textrangle'' from the position of the second opening tag. Using these two positions, we take the sub-string containing a document and yield it. We then remove the document from the remaining content of the file to process and repeat these steps, retrieving all documents efficiently. We repeat this algorithm until no documents are left in the file, as seen by the while loop condition. A special case occurs for the last document, which is easily handled with an \textit{if} statement.
 
 \newpage
 \paragraph{Block 3}
@@ -67,6 +67,7 @@ def block_extractor(INPUT_STRUCTURE):
 				yield {"ID": docId, "TEXT": content}
 		else:
 			content = textRoot.find('TITLE').text
+			content += " "
 			content += textRoot.find('BODY').text
 			yield {"ID": docId, "TEXT": content}
 # WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
@@ -77,7 +78,7 @@ This step requires a little bit more granularity in our approach than the other 
 	\item The type is ``BRIEF''. This type of document contains only a title and no actual article body. Therefore, we want to only retrieve the title of these documents
 	\item If the ``TEXT'' tag does not have a ``TYPE'' attribute, then it is a normal news article. We want to retrieve both the title and body of these documents.
 \end{itemize}
-In order to handle these three cases we use a series of simple \textit{if} statements. In the case of a brief new article we use BeautifulSoup to retrieve the ``TITLE'' tag then access the text property to retrieve its contents. Regular news document are similar, except we also retrieve and the contents of the ``BODY'' tag and concatenate it with the ``TITLE'' tag. We then create a docID-text dictionary and yield it.
+In order to handle these three cases we use a series of simple \textit{if} statements. In the case of a brief new article we use BeautifulSoup to retrieve the ``TITLE'' tag then access the text property to retrieve its contents. Regular news documents are dealt with similarly, we retrieve the contents of the ``BODY'' tag and concatenate it with the contents of the ``TITLE'' tag. We then create a docID-text dictionary and yield it to the output stream.
 \paragraph{Block 4}
 For block 4, we further split the document text into words, in a process known as tokenization.
 \begin{minted}[tabsize=4]{python}
@@ -88,7 +89,7 @@ def block_tokenizer(INPUT_STRUCTURE):
 			yield (dictionnary['ID'], token)
 	# WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 \end{minted}
-To perform tokenization, we leverage NLTK's \textit{word\_tokenize} method. We parse through every dictionary of document applying the \textit{word\_tokenize} method to the ``TEXT'' attribute of the dictionary. This method splits to text into a list of token, which we can then parse through yielding a tuple of the dictionary's ID and the token for every token.
+To perform tokenization, we leverage NLTK's \textit{word\_tokenize} method. We sift through every docID-Text dictionaries, applying the \textit{word\_tokenize} method to the ``TEXT'' attribute of the dictionary. This method splits to text into a list of token, which we can then sift through yielding a tuple of the dictionary's ID and the token for every token in the list.
 
 \paragraph{Block 5}
 In block 5, we perform stemming on the words that we tokenized in the previous step.
@@ -113,5 +114,5 @@ def block_stopwords_removal(INPUT_STRUCTURE, stopwords):
 			yield(tup[0], tup[1])
 	# WRITE YOUR CODE HERE ^^^^^^^^^^^^^^^^
 \end{minted}
-We begin by processing to input stowords string to make it easier to use down the line. Using python's list comprehension feature, we start by splitting the stopwords string on whitespace characters so that words stopwords like ``apple orange'' are understood like ['apple', 'orange'] instead of ['a','p','p','l','e',' ','o','r','a','n','g','e']. Then we stem the stopwords in that list to that if the term of a stopword has been stemmed, those tokens will also be removed. Removing the stopwords from the docID-token pair stream is then easier. We sift through the stream then check if the token is in then stopwords list. If it is not we yield the same pair, otherwise we ignore it.
+We begin by processing to input stop words string to make it easier to use down the line. Using Python's list comprehension feature, we start by splitting the stop words string on white space characters so that words stop words like ``apple orange'' are understood like ['apple', 'orange'] instead of ['a','p','p','l','e',' ','o','r','a','n','g','e']. Then we stem the stop words in that list to that if the term of a stop word has been stemmed, those tokens will also be removed. Having done this preprocessing, removing the stop words from the docID-token pair stream becomes easy. We sift through the stream and check if the token is in the stop words list. If it is not we yield the same pair, otherwise we ignore it.
 \end{document}
