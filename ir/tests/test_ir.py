@@ -1,4 +1,4 @@
-from p1 import __version__
+from ir import __version__
 
 
 def test_version():
