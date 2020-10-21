@@ -3,17 +3,19 @@ import pickle
 from ir.p1 import solutions
 
 preprocessings = []
+terms = 0
+postings = 0
+tokens = 0
 
 def create_index(terms, output_index):
     index = {}
     for term in terms:
-        print(term)
         if not term[1] in index:
             index[term[1]] = [term[0]]
         else:
             index[term[1]].append(term[0])
 
-    terms, postings, tokens = (count_terms(index), count_postings(index), count_tokens(terms))
+    terms, postings = (count_terms(index), count_postings(index))
     print('terms: {}\tpostings: {}\ttokens: {}'.format(terms, postings, tokens))
 
     with open(output_index, 'wb') as f:
@@ -31,6 +33,10 @@ def parse_document(path, stopwords):
 
     for filter in preprocessings:
         stream = filter(stream, stopwords)
+
+    global tokens
+    stream = list(stream)
+    tokens = count_tokens(stream)
 
     return sorted(set(stream), key=lambda element: (element[1], element[0]))
 
@@ -72,15 +78,15 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    if args.stopwords is not None:
+        preprocessings.append(remove_stopwords)
+        args.stopwords = open(args.stopwords, 'r').read()
     if args.removenumbers:
         preprocessings.append(remove_numbers)
     if args.casefolding:
         preprocessings.append(case_folding)
     if args.stemming:
         preprocessings.append(stem)
-    if args.stopwords is not None:
-        preprocessings.append(remove_stopwords)
-        args.stopwords = open(args.stopwords, 'r').read()
 
 
     create_index(

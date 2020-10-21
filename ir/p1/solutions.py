@@ -77,7 +77,6 @@ def block_stopwords_removal(INPUT_STRUCTURE, stopwords):
     # WRITE YOUR CODE HERE vvvvvvvvvvvvvvvv
     porter = PorterStemmer()
     stemmedStopWords = [] if stopwords == None else [porter.stem(word) for word in stopwords.split()]
-    print(stemmedStopWords)
     for tup in INPUT_STRUCTURE:
         if not tup[1] in stemmedStopWords:
             yield(tup[0], tup[1])
