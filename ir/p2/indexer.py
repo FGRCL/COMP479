@@ -1,5 +1,6 @@
 import argparse
 import pickle
+import time
 from ir.p1 import solutions
 
 preprocessings = []
@@ -54,7 +55,8 @@ def count_tokens(terms):
 
 def remove_numbers(stream, *args):
     for token in stream:
-        if not any([character.isnumeric() for character in token[1]]):
+        # if not any([character.isnumeric() for character in token[1]]):
+        if not token[1].isnumeric():
             yield(token[0], token[1])
 
 def case_folding(stream, *args):
@@ -62,7 +64,7 @@ def case_folding(stream, *args):
         yield (token[0], token[1].lower())
 
 def remove_stopwords(stream, *args):
-    return solutions.block_stopwords_removal(stream, args[0])
+    return solutions.block_stopwords_removal_no_stemming(stream, args[0])
 
 def stem(stream, *args):
     return solutions.block_stemmer(stream)
@@ -78,18 +80,20 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    if args.stopwords is not None:
-        preprocessings.append(remove_stopwords)
-        args.stopwords = open(args.stopwords, 'r').read()
     if args.removenumbers:
         preprocessings.append(remove_numbers)
     if args.casefolding:
         preprocessings.append(case_folding)
+    if args.stopwords is not None:
+        preprocessings.append(remove_stopwords)
+        args.stopwords = open(args.stopwords, 'r').read()
     if args.stemming:
         preprocessings.append(stem)
 
-
+    start_time = time.time()
     create_index(
         parse_document(args.path, args.stopwords)
         ,args.index
     )
+    stop_time = time.time()
+    print('process finished in {}s'.format(stop_time-start_time))

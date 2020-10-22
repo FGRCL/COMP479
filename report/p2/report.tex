@@ -13,16 +13,18 @@
 \begin{center}
 \begin{tabular}{ |c|c c c c c c c c c| } 
 	\hline
-	& \multicolumn{3}{|c}{(distinct) terms} & \multicolumn{3}{c}{nonpositional postings} & \multicolumn{3}{c|}{tokens}\\
-	& number & \Delta\% & T\% & number & \Delta\% & T\% & number & \Delta\% & T\% \\
+	& \multicolumn{3}{c}{(distinct) terms} & \multicolumn{3}{c}{nonpositional postings} & \multicolumn{3}{c|}{tokens}\\
+	& number & $\Delta\%$ & T\% & number & $\Delta\%$ & T\% & number & $\Delta\%$ & T\% \\
 	\hline
 	unfiltered		& 92,317 & & & 1,789,665 & & & 3,010,306 & &\\
-	no numbers		& 66,649 & -39 & & 1,664,299 & & & 1,664,299 & &\\
-	case folding	& 50,267 & -33 & & 1,546,832 & & & 1,546,832 & &\\
-	30 stop words	& 50,239 & & & 1,345,802 & & & 1,345,802& &\\
-	150 stop words	& 50,132 & & & 1,222,350 & & & 1,222,350& &\\
-	stemming		& 39,406 & & & 1,218,845 & & & 1,218,845& &\\
+	no numbers 		& 90,860 & -2  & -2  & 1,737,383 & -3  & -3  & 2,948,054 & -2  & -2\\
+	case folding	& 74,410 & -22 & -24 & 1,619,756 & -7  & -10 & 2,948,054 & -0  & -2\\
+	30 stop words	& 74,381 & -0  & -24 & 1,414,678 & -14 & -27 & 2,261,310 & -30 & -33\\
+	150 stop words	& 74,261 & -0  & -24 & 1,279,759 & -11 & -40 & 2,068,086 & -9  & -46\\
+	stemming		& 63,444 & -17 & -45 & 1,223,686 & -5  & -46 & 2,068,086 & -0  & -46\\
 	\hline
 \end{tabular}
 \end{center}
+
+no numbers		& 66,649 & -39 & & 1,664,299 & & & 2,868,819 & &\\
 \end{document}
