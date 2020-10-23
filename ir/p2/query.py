@@ -16,8 +16,8 @@ def load_index(index_file):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Query a dictionnart term')
-    parser.add_argument('-i', '--index', help="The index to look into", required=True)
-    parser.add_argument('-t', '--terms', help="The terms to lookup", metavar='term', required=True, nargs='+')
+    parser.add_argument('-i', '--index', help="The inverted index to use", required=True)
+    parser.add_argument('-t', '--terms', help="A list of terms to perform single term queries on", metavar='term', required=True, nargs='+')
     parser.add_argument('-o', '--output', help="The path for the ouput file", default=sys.stdout, required=False)
 
     args = parser.parse_args()
