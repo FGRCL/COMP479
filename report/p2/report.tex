@@ -2,7 +2,8 @@
 
 \usepackage{fullpage}
 \usepackage{minted}
-\usemintedstyle{autumn}
+\usepackage{csquotes}
+\usemintedstyle{friendly}
 
 \title{COMP 479 - Project 2}
 \author{François LaBerge}
@@ -13,7 +14,7 @@
 \section{Running the Program}
 See the ``README.md'' file packaged with the application.
 
-\section{Table Recreation}
+\section{Lossy Compressions Table}
 \begin{center}
 \begin{tabular}{ |c|c c c c c c c c c| } 
 	\hline
@@ -23,12 +24,62 @@ See the ``README.md'' file packaged with the application.
 	unfiltered		& 60,972 & & & 1,783,275& & & 2,871,145 & &\\
 	no numbers 		& 58,759 & -4  & -4  & 1,621,515 & -9  & -9  & 2,644,815 & -8  & -8\\
 	case folding	& 42,720 & -27 & -30 & 1,498,356 & -8  & -16 & 2,644,815 & -0  & -8\\
-	30 stop words	& 42,691 & -0  & -30 & 1,292,534 & -14 & -28 & 1,955,144 & -26 & -32\\
-	150 stop words	& 42,571 & -0  & -30 & 1,154,273 & -23 & -35 & 1,756,076 & -34 & -39\\
-	stemming		& 31,844 & -25 & -48 & 1,096,885 & -5  & -38 & 1,756,076 & -0  & -39\\
+	30 stop words	& 42,690 & -0  & -30 & 1,291,577 & -14 & -28 & 1,953,585 & -26 & -32\\
+	150 stop words	& 42,570 & -0  & -30 & 1,153,316 & -23 & -35 & 1,754,517 & -34 & -39\\
+	stemming		& 31,843 & -25 & -48 & 1,095,928 & -5  & -39 & 1,754,517 & -0  & -39\\
 	\hline
 \end{tabular}
 \end{center}
 
+\newpage
+
 \section{Code Design}
+	In this section we will go over the core parts of the code design
+	\subsection{Creating the Index}
+		\subsubsection{Document Parsing}
+			To parse the documents of Reuters, we reuse the code from project 1:
+			\inputminted{python}{codesnippets/parser.txt}
+			The tokenizer for the has been replaced with a regular expression tokenizer to easily discard punctuation sings.
+			\inputminted{python}{codesnippets/tokenizer.txt}
+			This regular expression will match with any string of strictly characters or strictly numbers.
+		
+		\subsubsection{Applying Filters \& Lossy Compressions}
+			To apply the lossy compression algorithms we use a list of lambdas that apply filters to the stream of token-docId pairs. The list is called ``preprocessings''. Filters are added through the command line interface.
+			\inputminted{python}{codesnippets/filterlist.txt}
+			The filters are then applied with a simple for loop.
+			\inputminted{python}{codesnippets/filter.txt}
+			The implementation of the filters is in ``$ir/p2/stream_filters.py$''
+
+		\subsubsection{Sorting and Removing Duplicates}
+			The removal of duplicates is done with the python ``set'' function and the sorting is done with python built-in ``sorted'' function. The whole ordeal is dealt with in a single line
+			\inputminted{python}{codesnippets/sort.txt}
+			Notice that we first sort by term, then by docID.
+
+		\subsubsection{Creating the naive index}
+			A python dictionary is used to create the inverted index. The dictionary has the advantage of being easy to implement and most importantly has constant lookup times. In this case, the collection is small enough so that the expected issues of high memory usage and collisions are negligible here.
+			\inputminted[]{python}{codesnippets/naiveindex.txt}
+			The index is serialized and saved on disk in python's ``pickle'' format to be easily reusable.
+	\subsection{Querying the Index}
+		Since we used a dictionnary as the datastructure for our inverted index, perform single term queries is trivial. We first load the dictionnary in memory.
+		\inputminted{python}{codesnippets/loadindex.txt}
+		we can then use the input terms to as the dictionnary indices to retrieve their postings list.
+		\inputminted[]{python}{codesnippets/indexretrieval.txt}
+
+\newpage
+
+\section{Sample Queries}
+	For our sample queries we chose the words ``the'', ``man'', and ``carrot''. For the regular index we get the following results.
+	\inputminted[]{json}{codesnippets/sampleQueriesNormal.txt}
+	Note that many lines were omitted in the snippet above for readablity, see ``sampleQueriesNormal.json'' and ``sampleQueriesCompressed.json'' for the  full results.
+	\inputminted[]{json}{codesnippets/sampleQueriesCompressed.txt}
+	\par Let's begin our comparison from top to bottom. Unsurprisingly, the term ``the'' appears in almost every document in the corpus as we can see from the query on the uncompressed index. However, no results are found ``the'' in the compressed index since it is the first of stopwords to be removed.
+	\par The term ``man'' is a little more interesting, we can see that the numbers of terms were greatly reduced from the regular to the compressed index. This is strange, because casefolding is should have increased the length of the postings list if anything. Additionally, the smaller postings list is not a subset of the larger postings list which is even more strange. However, looking at the list of 150 stopwords, on can see that the word ``man'' is \#43 of the most used. So then why was it not entirely removed? Running the query ``man'' on the index without stemming reveals the answers, as we get the result: []. Stemming is the culprit then. Observing the document \#486 we can see the word ``manning'' and ``management''. This means that the PorterStemmer reintroduced a word from the stopwords list by stemming words starting with ``man''.
+	\par We can see that the term ``carrot'' increased its postings list from 0 to 1 in the compressed index. Looking at the document \#9980 one can read
+	\begin{displayquote}
+		Named in the suit were \&lt;Carrot
+		Components Corp>, \&lt;ODU-Kontact GmbH and Co> and \&lt;KG and G and H
+		Technologies Inc>, it said.
+	\end{displayquote}
+	As expected, the postings list of ``Carrot'' was merged with the one of ``carrot''.
+	
 \end{document}

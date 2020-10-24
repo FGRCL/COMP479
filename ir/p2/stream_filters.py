@@ -14,7 +14,7 @@ def case_folding(stream, *args):
 
 def remove_stopwords(stream, *args):
     stopwords = args[0]
-    stopwords = [] if stopwords == None else [word for word in stopwords.split()]
+    stopwords = [] if stopwords == None else [word.lower() for word in stopwords.split()]
     for tup in stream:
         if not tup[1] in stopwords:
             yield (tup[0], tup[1])
