@@ -1,0 +1,6 @@
+def query_term(terms, index_file, output_file):
+    index = load_index(index_file)
+    result = {}
+    for term in terms:
+        result[term] = index[term] if term in index else []
+    print(json.dumps(result, indent=3), file=output_file)

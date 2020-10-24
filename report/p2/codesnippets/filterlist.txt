@@ -1,0 +1,11 @@
+	args = parser.parse_args()
+
+	if args.removenumbers:
+		preprocessings.append(stream_filters.remove_numbers)
+	if args.casefolding:
+		preprocessings.append(stream_filters.case_folding)
+	if args.stopwords is not None:
+		preprocessings.append(stream_filters.remove_stopwords)
+		args.stopwords = open(args.stopwords, 'r').read()
+	if args.stemming:
+		preprocessings.append(stream_filters.stem)

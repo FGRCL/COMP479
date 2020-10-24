@@ -1,0 +1,2 @@
+	for filter in preprocessings:
+		stream = filter(stream, stopwords)

@@ -1,0 +1,7 @@
+	stream = stream_filters.tokenizer(
+				solutions.block_extractor(
+					solutions.block_document_segmenter(
+						solutions.block_reader(path)
+					)
+				)
+			)

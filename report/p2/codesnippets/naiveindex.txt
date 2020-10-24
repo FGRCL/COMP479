@@ -1,0 +1,12 @@
+    index = {}
+    for term in terms:
+        if not term[1] in index:
+            index[term[1]] = [term[0]]
+        else:
+            index[term[1]].append(term[0])
+
+    terms, postings = (count_terms(index), count_postings(index))
+    print('terms: {}\tpostings: {}\ttokens: {}'.format(terms, postings, tokens))
+
+    with open(output_index, 'wb') as f:
+        pickle.dump(index, f, pickle.HIGHEST_PROTOCOL)

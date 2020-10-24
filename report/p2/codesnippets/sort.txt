@@ -1,0 +1,1 @@
+	return sorted(set(stream), key=lambda element: (element[1], element[0]))
