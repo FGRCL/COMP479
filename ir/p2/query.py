@@ -17,6 +17,7 @@ def query_term(terms, index_file, output_file, stem_query):
 
 def contains_uppercase(word):
     return any([character.isupper() for character in word])
+
 def load_index(index_file):
     with open(index_file, 'rb') as f:
         return pickle.load(f)
