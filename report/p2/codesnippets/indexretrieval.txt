@@ -1,6 +1,10 @@
-def query_term(terms, index_file, output_file):
-    index = load_index(index_file)
-    result = {}
-    for term in terms:
-        result[term] = index[term] if term in index else []
-    print(json.dumps(result, indent=3), file=output_file)
+    def query_term(terms, index_file, output_file, stem_query):
+        stemmer = PorterStemmer()
+        index = load_index(index_file)
+        result = {}
+        for term in terms:
+            term_to_query = term
+            if stem_query and not contains_uppercase(term):
+                term_to_query = stemmer.stem(term)
+            result[term] = index[term_to_query] if term_to_query in index else []
+        print(json.dumps(result, indent=3), file=output_file)
