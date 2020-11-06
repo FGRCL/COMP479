@@ -44,5 +44,6 @@ def block_name_generator(block_path):
         count += 1
 
 def write_to_pickle(block, block_name):
-    with open(block_name, 'wb') as f:
-        pickle.dump(block, f, pickle.HIGHEST_PROTOCOL)
+    file = open(block_name, 'rw')
+    pickle.dump(block, file, pickle.HIGHEST_PROTOCOL)
+    return file
