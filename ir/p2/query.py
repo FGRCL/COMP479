@@ -4,6 +4,7 @@ import sys
 import json
 from nltk import PorterStemmer
 
+
 def query_term(terms, index_file, output_file, stem_query):
     stemmer = PorterStemmer()
     index = load_index(index_file)
@@ -15,12 +16,15 @@ def query_term(terms, index_file, output_file, stem_query):
         result[term] = index[term_to_query] if term_to_query in index else []
     print(json.dumps(result, indent=3), file=output_file)
 
+
 def contains_uppercase(word):
     return any([character.isupper() for character in word])
+
 
 def load_index(index_file):
     with open(index_file, 'rb') as f:
         return pickle.load(f)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Query a dictionary term')

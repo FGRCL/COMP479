@@ -1,10 +1,10 @@
 import argparse
-from ir.p3.spimi_block import Block
+from ir.p3.data.spimi_block import Block
 from ir.p3.util import write_to_pickle
 from ir.p3.external_merge import build_final_index
+from ir.p3.data.posting import Posting
 from ir.p2 import stream_filters
 from ir.p1 import solutions
-
 
 
 def build_index(in_path, out_path):
@@ -30,7 +30,7 @@ def spimi_invert(token_stream, max_dictionary_size, block_path):
             token_accumulator = []
 
     block_name = next(block_names)
-    block = build_block(token_accumulator, block_name[1])
+    block: Block = build_block(token_accumulator, block_name[1])
     write_to_pickle(block, block_name[0])
 
     build_final_index(block_path)
@@ -46,15 +46,23 @@ def parse_document(in_path):
     )
 
 
-#TODO handle duplicates?
+# TODO sort the postings list?
 def build_block(token_stream, count):
     index = {}
     for token in token_stream:
         if not token[1] in index:
-            index[token[1]] = [token[0]]
+            posting = Posting(token[0], 1)
+            index[token[1]] = [posting]
         else:
-            index[token[1]].append(token[0])
+            posting = next(filter(lambda posting: posting.doc_id == token[0], index[token[1]]), None)
+            if posting is not None:
+                posting.term_count += 1
+            else:
+                posting = Posting(token[0], 1)
+                index[token[1]].append(posting)
 
+    for term in index:
+        index[term].sort(key=lambda posting: posting.doc_id)
     block: Block = Block(index, sorted(index.keys()), count)
     return block
 

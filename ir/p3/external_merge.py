@@ -1,8 +1,10 @@
 import os
 from os import path
 from pathlib import Path
-from ir.p3.spimi_block import Block
+from typing import List
+from ir.p3.data.spimi_block import Block
 from ir.p3.util import write_to_pickle, load_block_from_pickle
+from ir.p3.data.posting import Posting
 
 
 def build_final_index(path_string: str):
@@ -57,18 +59,58 @@ def merge(first_block: Block, second_block: Block, out_path: path):
             j += 1
         elif first_term == second_term:
             new_terms.append(first_term)
-            merged_postings = first_block.index[first_term] + second_block.index[second_term]
-            #TODO sort the postings?
+            merged_postings = merge_postings_list(first_block.index[first_term], second_block.index[second_term])
             new_index[first_term] = merged_postings
             i += 1
             j += 1
+
+    while i < len(first_block.sorted_terms):
+        first_term = first_block.sorted_terms[i]
+        new_terms.append(first_term)
+        new_index[first_term] = first_block.index[first_term]
+        i += 1
+
+    while j < len(second_block.sorted_terms):
+        new_terms.append(second_term)
+        new_index[second_term] = second_block.index[second_term]
+        j += 1
+
     new_block = Block(new_index, new_terms, first_block.name + second_block.name)
-    block_path = "{}/{}.pickle".format(out_path, first_block.name + second_block.name)
+    block_path = "{}/{}.pickle".format(out_path, str(first_block.name) + str(second_block.name))
     write_to_pickle(new_block, block_path)
 
 
+def merge_postings_list(first_list: List[Posting], second_list: List[Posting]):
+    merged_postings_list = []
+    i, j = 0, 0
+    while i < len(first_list) and j < len(second_list):
+        first_elem = first_list[i]
+        second_elem = second_list[j]
+        if first_elem.doc_id < second_elem.doc_id:
+            merged_postings_list.append(first_elem)
+            i += 1
+        if first_elem.doc_id > second_elem.doc_id:
+            merged_postings_list.append(second_elem)
+            j += 1
+        if first_elem.doc_id == second_elem.doc_id:
+            merged_posting: Posting = Posting(first_elem.doc_id, first_elem.term_count + second_elem.term_count)
+            merged_postings_list.append(merged_posting)
+            i += 1
+            j += 1
+
+    while i < len(first_list):
+        merged_postings_list.append(first_list[i])
+        i += 1
+
+    while j < len(second_list):
+        merged_postings_list.append(second_list[j])
+        j += 1
+
+    return merged_postings_list
+
+
 def get_number_of_files_in_directory(path):
-    full_path  = get_merged_path(path)
+    full_path = get_merged_path(path)
     return len([name for name in os.listdir(full_path) if os.path.isfile(full_path+"/"+name) ])
 
 

@@ -1,5 +1,5 @@
 import pickle
-from ir.p3.spimi_block import Block
+from ir.p3.data.spimi_block import Block
 
 
 def write_to_pickle(block, block_name):

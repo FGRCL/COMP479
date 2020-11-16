@@ -1,16 +1,23 @@
 import argparse
 import json
 import sys
+from typing import List
 from ir.p3.util import load_block_from_pickle
+from ir.p3.data.spimi_block import Block
+from ir.p3.data.posting import Posting
+
 
 def query_term(terms, index_file, output_file):
-    index = load_block_from_pickle(index_file).index
+    index: Block = load_block_from_pickle(index_file).index
     result = {}
     for term in terms:
         term_to_query = term
-        result[term] = index[term_to_query] if term_to_query in index else []
+        result[term] = get_doc_id(index[term_to_query] if term_to_query in index else [])
     print(json.dumps(result, indent=3), file=output_file)
 
+
+def get_doc_id(postings_list: List[Posting]):
+    return [posting.doc_id for posting in postings_list]
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Query a dictionary term')
