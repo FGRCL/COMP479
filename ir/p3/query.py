@@ -3,29 +3,35 @@ import json
 import sys
 from typing import List
 from math import log
+from typing import Dict
 from ir.p3.util import load_block_from_pickle
-from ir.p3.data.spimi_block import Block
 from ir.p3.data.posting import Posting
+from ir.p3.datastructure.doc_rank_queue import RankedDocumentQueue
 
 
 def query_term(terms, index_file, output_file):
-    index: Block = load_block_from_pickle(index_file).index
-    result = {}
+    index: Dict = load_block_from_pickle(index_file).index
+    collection_size = len(index)
+    ranked_documents: RankedDocumentQueue = RankedDocumentQueue()
     for term in terms:
-        term_to_query = term
-        result[term] = get_doc_id(index[term_to_query] if term_to_query in index else [])
+        for posting in index[term]:
+            df = len(index[term])
+            tf = posting.term_count
+            rank = rank_term(df, tf, collection_size)
+            ranked_documents.push(posting, rank)
+
+    result = [posting.doc_id for posting in ranked_documents]
     print(json.dumps(result, indent=3), file=output_file)
 
 
-def rank(query):
+def rank(query: List[Posting]):
     return sum([rank(term) for term in query])
+
 
 def rank_term(df, tf, collection_size):
     k = 1
-    b = 1
-    return log(collection_size/df)*( ((k+1)*tf) / (k*((1-b)+b*(1))+tf) )
-def get_doc_id(postings_list: List[Posting]):
-    return [posting.doc_id for posting in postings_list]
+    b = 0
+    return log(collection_size/df, 10) * ( ((k+1)*tf) / (k*((1-b)+b*(1))+tf) )
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Query a dictionary term')
