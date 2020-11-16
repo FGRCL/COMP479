@@ -2,6 +2,7 @@ import argparse
 import json
 import sys
 from typing import List
+from math import log
 from ir.p3.util import load_block_from_pickle
 from ir.p3.data.spimi_block import Block
 from ir.p3.data.posting import Posting
@@ -16,6 +17,13 @@ def query_term(terms, index_file, output_file):
     print(json.dumps(result, indent=3), file=output_file)
 
 
+def rank(query):
+    return sum([rank(term) for term in query])
+
+def rank_term(df, tf, collection_size):
+    k = 1
+    b = 1
+    return log(collection_size/df)*( ((k+1)*tf) / (k*((1-b)+b*(1))+tf) )
 def get_doc_id(postings_list: List[Posting]):
     return [posting.doc_id for posting in postings_list]
 
