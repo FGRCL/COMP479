@@ -46,9 +46,9 @@ def parse_document(in_path):
     )
 
 
-# TODO sort the postings list?
 def build_block(token_stream, count):
     index = {}
+    document_lengths = {}
     for token in token_stream:
         if not token[1] in index:
             posting = Posting(token[0], 1)
@@ -61,9 +61,14 @@ def build_block(token_stream, count):
                 posting = Posting(token[0], 1)
                 index[token[1]].append(posting)
 
+        if token[0] not in document_lengths:
+            document_lengths[token[0]] = 1
+        else:
+            document_lengths[token[0]] += 1
+
     for term in index:
         index[term].sort(key=lambda posting: posting.doc_id)
-    block: Block = Block(index, sorted(index.keys()), count)
+    block: Block = Block(index, document_lengths, sorted(index.keys()), count)
     return block
 
 

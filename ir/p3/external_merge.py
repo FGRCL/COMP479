@@ -1,4 +1,5 @@
 import os
+import copy
 from os import path
 from pathlib import Path
 from typing import List
@@ -8,7 +9,7 @@ from ir.p3.data.posting import Posting
 
 
 def build_final_index(path_string: str):
-    merge_pass_directory_template = path_string+"/pass{}";
+    merge_pass_directory_template = path_string+"/pass{}"
     pass_count = 1
     in_path = Path(path_string)
     out_path = Path(merge_pass_directory_template.format(pass_count))
@@ -71,11 +72,13 @@ def merge(first_block: Block, second_block: Block, out_path: path):
         i += 1
 
     while j < len(second_block.sorted_terms):
+        second_term = second_block.sorted_terms[j]
         new_terms.append(second_term)
         new_index[second_term] = second_block.index[second_term]
         j += 1
 
-    new_block = Block(new_index, new_terms, first_block.name + second_block.name)
+    new_document_lengths = merge_document_lengths(first_block.document_lengths, second_block.document_lengths)
+    new_block = Block(new_index, new_document_lengths, new_terms, first_block.name + second_block.name)
     block_path = "{}/{}.pickle".format(out_path, str(first_block.name) + str(second_block.name))
     write_to_pickle(new_block, block_path)
 
@@ -108,6 +111,15 @@ def merge_postings_list(first_list: List[Posting], second_list: List[Posting]):
 
     return merged_postings_list
 
+
+def merge_document_lengths(first_document_lengths, second_document_lengths):
+    new_document_lengths = copy.deepcopy(first_document_lengths)
+    for key in second_document_lengths:
+        if key not in new_document_lengths:
+            new_document_lengths[key] = second_document_lengths[key]
+        else:
+            new_document_lengths[key] = (new_document_lengths[key] + second_document_lengths[key])
+    return new_document_lengths
 
 def get_number_of_files_in_directory(path):
     full_path = get_merged_path(path)
