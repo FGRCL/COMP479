@@ -1,5 +1,6 @@
 import os
 import copy
+from multiprocessing import Process
 from os import path
 from pathlib import Path
 from typing import List
@@ -34,8 +35,14 @@ def merge_blocks_in_directory(in_path: path, out_path: path):
         second_block = load_block_from_pickle(files[i])
         block_pairs.append((first_block, second_block))
 
+    threads = []
     for pair in block_pairs:
-        merge(pair[0], pair[1], out_path)
+        thread = Process(target=merge, args=(pair[0], pair[1], out_path))
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()
 
     if get_number_of_files_in_directory(in_path)%2 == 1:
         odd_block = load_block_from_pickle(files[len(files)-1])

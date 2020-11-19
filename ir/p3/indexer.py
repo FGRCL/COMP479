@@ -1,4 +1,6 @@
 import argparse
+import time
+
 from ir.p3.data.spimi_block import Block
 from ir.p3.util import write_to_pickle
 from ir.p3.external_merge import build_final_index
@@ -85,4 +87,7 @@ if __name__ == '__main__':
     parser.add_argument('-i', '--index', help="The index outputfile")
     args = parser.parse_args()
 
+    start_time = time.time()
     build_index(args.path, args.index)
+    stop_time = time.time()
+    print('process finished in {}s'.format(stop_time - start_time))
