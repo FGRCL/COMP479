@@ -1,0 +1,27 @@
+result = []
+if query_mode == QueryMode.RANKED:
+	ranked_documents: RankedDocumentQueue = RankedDocumentQueue()
+	for term in terms:
+		if term in index:
+			for posting in index[term]:
+				df = len(index[term])
+				tf = posting.term_count
+				document_length = document_lengths[posting.doc_id]
+				rank = rank_term(df, tf, collection_size, document_length, average_document_length)
+				ranked_documents.push(posting, rank)
+	result = [posting.doc_id for posting in ranked_documents]
+elif query_mode == QueryMode.AND:
+	postings_list = []
+	first_term = True
+	for term in terms:
+		if term in index:
+			postings_list = intersect_postings(postings_list, index[term], first_term)
+			first_term = False
+	result = [posting.doc_id for posting in postings_list]
+elif query_mode == QueryMode.OR:
+	postings_list = []
+	for term in terms:
+		if term in index:
+			postings_list = postings_list + index[term]
+	postings_list.sort(key=lambda p: p.term_count, reverse=True)
+	result = [posting.doc_id for posting in postings_list]

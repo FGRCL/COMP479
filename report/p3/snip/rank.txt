@@ -1,0 +1,4 @@
+def rank_term(df, tf, collection_size, document_length, average_document_length):
+    k = 1
+    b = 1
+    return log(collection_size/df, 10) * ( ((k+1)*tf) / (k*((1-b)+b*(document_length/average_document_length))+tf) )

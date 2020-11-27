@@ -1,0 +1,38 @@
+def merge(first_block: Block, second_block: Block, out_path: path):
+    new_terms = []
+    new_index = {}
+    i, j = 0, 0
+    while i < len(first_block.sorted_terms) and j < len(second_block.sorted_terms):
+        first_term = first_block.sorted_terms[i]
+        second_term = second_block.sorted_terms[j]
+        if first_term < second_term:
+            new_terms.append(first_term)
+            new_index[first_term] = first_block.index[first_term]
+            i += 1
+        elif first_term > second_term:
+            new_terms.append(second_term)
+            new_index[second_term] = second_block.index[second_term]
+            j += 1
+        elif first_term == second_term:
+            new_terms.append(first_term)
+            merged_postings = merge_postings_list(first_block.index[first_term], second_block.index[second_term])
+            new_index[first_term] = merged_postings
+            i += 1
+            j += 1
+
+    while i < len(first_block.sorted_terms):
+        first_term = first_block.sorted_terms[i]
+        new_terms.append(first_term)
+        new_index[first_term] = first_block.index[first_term]
+        i += 1
+
+    while j < len(second_block.sorted_terms):
+        second_term = second_block.sorted_terms[j]
+        new_terms.append(second_term)
+        new_index[second_term] = second_block.index[second_term]
+        j += 1
+
+    new_document_lengths = merge_document_lengths(first_block.document_lengths, second_block.document_lengths)
+    new_block = Block(new_index, new_document_lengths, new_terms, first_block.name + second_block.name)
+    block_path = "{}/{}.pickle".format(out_path, str(first_block.name) + str(second_block.name))
+    write_to_pickle(new_block, block_path)

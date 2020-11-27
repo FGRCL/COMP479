@@ -1,0 +1,13 @@
+def build_final_index(path_string: str):
+    merge_pass_directory_template = path_string+"/pass{}"
+    pass_count = 1
+    in_path = Path(path_string)
+    out_path = Path(merge_pass_directory_template.format(pass_count))
+    while(get_number_of_files_in_directory(in_path)>1):
+        merge_blocks_in_directory(in_path, out_path)
+        pass_count += 1
+        in_path = out_path
+        out_path = Path(merge_pass_directory_template.format(pass_count))
+
+    final_index = load_block_from_pickle(get_files_in_directory(in_path)[0])
+    write_to_pickle(final_index, path_string+"/final_index.pickle")

@@ -1,0 +1,19 @@
+def spimi_invert(token_stream, max_dictionary_size, block_path):
+    count = 0
+    token_accumulator = []
+    block_names = block_name_generator(block_path)
+    for token in token_stream:
+        count += 1
+        token_accumulator.append(token)
+        if count == max_dictionary_size:
+            block_name = next(block_names)
+            block = build_block(token_accumulator, block_name[1])
+            write_to_pickle(block, block_name[0])
+            count = 0
+            token_accumulator = []
+
+    block_name = next(block_names)
+    block: Block = build_block(token_accumulator, block_name[1])
+    write_to_pickle(block, block_name[0])
+
+    build_final_index(block_path)
