@@ -25,7 +25,7 @@ def query_term(terms, index_file, output_file, query_mode):
             if term in index:
                 for posting in index[term]:
                     df = len(index[term])
-                    tf = posting.term_count
+                    tf = posting.term_frequency
                     document_length = document_lengths[posting.doc_id]
                     rank = rank_term(df, tf, collection_size, document_length, average_document_length)
                     ranked_documents.push(posting, rank)
@@ -43,7 +43,7 @@ def query_term(terms, index_file, output_file, query_mode):
         for term in terms:
             if term in index:
                 postings_list = postings_list + index[term]
-        postings_list.sort(key=lambda p: p.term_count, reverse=True)
+        postings_list.sort(key=lambda p: p.term_frequency, reverse=True)
         result = [posting.doc_id for posting in postings_list]
 
     print(json.dumps(result, indent=3), file=output_file)
@@ -84,7 +84,7 @@ def intersect_postings(first_postings, second_postings, first_term):
 
 def union_positions(heap, second_postings):
     for postings in second_postings:
-        heapq.heappush(heap, (postings.term_count, postings.doc_id))
+        heapq.heappush(heap, (postings.term_frequency, postings.doc_id))
 
 
 class QueryMode(Enum):

@@ -58,7 +58,7 @@ def build_block(token_stream, count):
         else:
             posting = next(filter(lambda posting: posting.doc_id == token[0], index[token[1]]), None)
             if posting is not None:
-                posting.term_count += 1
+                posting.term_frequency += 1
             else:
                 posting = Posting(token[0], 1)
                 index[token[1]].append(posting)
