@@ -103,7 +103,7 @@ def merge_postings_list(first_list: List[Posting], second_list: List[Posting]):
             merged_postings_list.append(second_elem)
             j += 1
         if first_elem.doc_id == second_elem.doc_id:
-            merged_posting: Posting = Posting(first_elem.doc_id, first_elem.term_count + second_elem.term_count)
+            merged_posting: Posting = Posting(first_elem.doc_id, first_elem.term_frequency + second_elem.term_frequency)
             merged_postings_list.append(merged_posting)
             i += 1
             j += 1
