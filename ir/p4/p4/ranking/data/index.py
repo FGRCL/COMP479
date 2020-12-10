@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
-from plistlib import Dict
-from typing import List
+from typing import List, Dict
 
 from ir.p4.p4.ranking.data.term import Term
 

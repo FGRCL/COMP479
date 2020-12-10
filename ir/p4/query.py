@@ -1,50 +1,34 @@
 import argparse
-import math
 import pickle
+import sys
 
 from ir.p4.p4.indexer.data.inverted_index import InvertedIndex
-from ir.p4.p4.indexer.data.postings_list import PostingsList
+from ir.p4.p4.indexer.tokenizer import tokenize_text
+from ir.p4.p4.ranking.RankingAlgorithmChoice import RankingAlgorithmChoice
+from ir.p4.p4.ranking.ranking_algorithm import RankingAlgorithm
 
 
-def query(index_file):
-    index: InvertedIndex = pickle.load(open(index_file, "rb"))
+def query(index_file: str, query: str, ranking_algorithm_choice: RankingAlgorithmChoice):
 
-    for term in index.inverted_index:
-        print(f'term {term}, df:{index.inverted_index[term].get_document_frequency()}')
-        for posting in index.inverted_index[term].get_postings():
-            print(f'\t{posting}')
+    inverted_index: InvertedIndex = pickle.load(open(index_file, "rb"))
 
-    for document in index.document_list:
-        print(f'document: {document.id}, size: {document.size}')
+    ranking: RankingAlgorithm = ranking_algorithm_choice.get_algorithm()
+    query_tokens = list(tokenize_text(query))
+        
+    ranked_documents = ranking.rank(query_tokens, inverted_index)
 
-    print(f'nb: {index.document_list.get_nb_documents()}, avg: {index.document_list.get_average_document_length()}')
-
-
-def tf_idf_ranking(index: InvertedIndex):
-    postings: PostingsList = PostingsList()
-    for term in index.inverted_index:
-        postings_list = index.inverted_index[term]
-        for posting in postings_list.get_postings():
-            pass
-
-
-def tf_idf_score(term_frequency, document_frequency, nb_documents):
-    return (
-        (1 + math.log(term_frequency)) +
-        math.log(nb_documents/document_frequency)
-    )
-
-
-def bm25_score(document_frequency, term_frequency, nb_documents, document_length, average_document_length, k1, b):
-    return math.log(nb_documents/document_frequency)*(
-            ((k1+1)*term_frequency)/
-            (k1*((1-b)+b*(document_length/average_document_length)+term_frequency))
-    )
-
+    for ranked_document in ranked_documents:
+        print(f'{ranked_document[1]}, {ranked_document[0]}')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Query a dictionary term')
-    parser.add_argument('-i', '--index', help="Path to the inverted index to use", type=str, default="index/index_big.pickle")
+    parser.add_argument('--index', '-i', help="Path to the inverted index to use", type=str, default="index/index_big.pickle")
+    parser.add_argument('--query', '-q', help="the use query", type=str, required=True)
+    parser.add_argument('--rankingalgorithm', '-ra', help="The ranking algorithm to use", choices=RankingAlgorithmChoice, type=RankingAlgorithmChoice.from_string, default=RankingAlgorithmChoice.tfidf)
+    parser.add_argument('--output', '-o', help="The output file", type=str, required=False)
     args = parser.parse_args()
 
-    query(args.index)
+    if args.output is not None:
+        sys.stdout = open(args.output, "w")
+
+    query(args.index, args.query, args.rankingalgorithm)

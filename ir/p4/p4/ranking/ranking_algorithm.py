@@ -1,4 +1,4 @@
-from abc import ABCMeta, abstractmethod
+from abc import abstractmethod, ABC
 from typing import List, Tuple
 
 from ir.p4.p4.indexer.data.inverted_index import InvertedIndex
@@ -7,10 +7,10 @@ from ir.p4.p4.ranking.data.index import Index
 from ir.p4.p4.ranking.ranked_document_queue import RankedDocumentsQueue
 
 
-class RankingAlgorithm(ABCMeta):
-    def __init__(cls, nb_documents_to_return):
-        super().__init__(cls)
-        cls._nb_documents_to_return = nb_documents_to_return
+class RankingAlgorithm(ABC):
+    def __init__(self, nb_documents_to_return):
+        super().__init__()
+        self._nb_documents_to_return = nb_documents_to_return
 
     def rank(self, query: List[Token], inverted_index: InvertedIndex) -> List[Tuple[float, str]]:
         index: Index = Index()

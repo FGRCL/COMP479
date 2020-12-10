@@ -18,7 +18,7 @@ class RankedDocumentsQueue:
         return len(self._queue)
 
     def get_ranked_posting(self) -> List[Tuple[float, str]]:
-        return [(element[0], element[1]) for element in heapq.nsmallest(self._max_items, self._queue)]
+        return [(-element[0], element[1]) for element in heapq.nsmallest(self._max_items, self._queue)]
 
     def __iter__(self) -> Tuple[float, str]:
         yield from self.get_ranked_posting()
