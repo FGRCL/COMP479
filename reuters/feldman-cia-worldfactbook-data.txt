@@ -185,7 +185,7 @@ Barbuda","Industries",["tourism","construction","light =
 manubgfacturing"]).
 bgfact("Antigua and Barbuda","Agriculture",["expanding output of =
 cotton","fruits","vegetables","coconuts","cucumbers","mangoes","not =
-self-sufficient in food"]).
+cls-sufficient in food"]).
 bgfact("Arctic Ocean","NaturalResources",["sand and gravel =
 aggregates","placer deposits","polymetallic nodules","oil  and gas =
 fields","fish","marine mammals"]).
@@ -301,7 +301,7 @@ bgfact("Austria","Industries",["foods","iron","steel","machines","textile=
 s","chemicals","electrical","paper and pulp","tourism","mining","motor =
 vehicles"]).
 bgfact("Austria","Agriculture",["grains","fruit","potatoes","sugar =
-beets","sawn wood","cattle","pigs","-90% self-sufficient in food"]).
+beets","sawn wood","cattle","pigs","-90% cls-sufficient in food"]).
 bgfact("Azerbaijan","LandBounderies",["Armenia","Russia","Turkey"]).
 bgfact("Azerbaijan","NaturalResources",["petroleum","natural gas","iron =
 ore","nonferrous metals","alumina"]).
@@ -411,7 +411,7 @@ bgfact("Barbados","ImportPartners",["US","UK","Trinidad and =
 Tobago","Japan"]).
 bgfact("Barbados","Industries",["tourism","sugar","light =
 manubgfacturing","component assembly for export","petroleum"]).
-bgfact("Barbados","Agriculture",["not self-sufficient in food"]).
+bgfact("Barbados","Agriculture",["not cls-sufficient in food"]).
 bgfact("Bassas da India","LandBounderies",[]).
 bgfact("Bassas da India","NaturalResources",["none"]).
 bgfact("Bassas da India","Capital",["none; administered by France from =
@@ -553,7 +553,7 @@ bgfact("Bolivia","Industries",["mining","smelting","petroleum","food and =
 beverage","tobacco","handicrafts","illicit drug industry reportedly =
 produces of its  revenues"]).
 bgfact("Bolivia","Agriculture",["principal commodities - =
-coffee","coca","cotton","corn","sugarcane","rice","potatoes","self-suffic=
+coffee","coca","cotton","corn","sugarcane","rice","potatoes","cls-suffic=
 ient in food"]).
 bgfact("Bosnia and Herzegovina","LandBounderies",["Croatia","Serbia and =
 Montenegro"]).
@@ -620,7 +620,7 @@ America","Japan"]).
 bgfact("Brazil","Industries",["shoes","chemicals","cement","lumber","iron=
  ore","steel","motor vehicles and auto parts","metalworking","Capital   =
 goods","tin"]).
-bgfact("Brazil","Agriculture",["corn","sugarcane","cocoa","self-sufficien=
+bgfact("Brazil","Agriculture",["corn","sugarcane","cocoa","cls-sufficien=
 t in food","except for wheat"]).
 bgfact("British Indian Ocean Territory","LandBounderies",[]).
 bgfact("British Indian Ocean =
@@ -706,7 +706,7 @@ bgfact("Burkina","Industries",["cotton lint","beverages","agricultural =
 processing","soap","cigarettes","textiles","gold mining and =
 extraction"]).
 bgfact("Burkina","Agriculture",["peanuts","shea nuts","sesame","food =
-sorghum","millet","corn","not self-sufficient in food grains"]).
+sorghum","millet","corn","not cls-sufficient in food grains"]).
 bgfact("Burma","LandBounderies",["Bangladesh","China","India","Laos","Tha=
 iland"]).
 bgfact("Burma","NaturalResources",["petroleum","timber","tin","antimony",=
@@ -912,7 +912,7 @@ bgfact("Chad","Industries",["cotton textile =
 mills","slaughterhouses","brewery","natron","soap","cigarettes"]).
 bgfact("Chad","Agriculture",["food crops include =
 sorghum","millet","peanuts","rice","potatoes","livestock - =
-cattle","sheep","goats","self-sufficient in food in years of adequate =
+cattle","sheep","goats","cls-sufficient in food in years of adequate =
 rainfall"]).
 bgfact("Chile","LandBounderies",["Argentina","Bolivia","Peru"]).
 bgfact("Chile","NaturalResources",["copper","timber","iron =
@@ -1137,7 +1137,7 @@ bgfact("Cote d'Ivoire","Industries",["foodstuffs","wood processing","oil =
 refinery","automobile assembly","textiles","fertilizer","beverage"]).
 bgfact("Cote d'Ivoire","Agriculture",["most important sector","crops =
 include coffee","cocoa beans","timber","bananas","palm  kernels","food =
-corn","rice","manioc","not  self-sufficient in bread grain and dairy =
+corn","rice","manioc","not  cls-sufficient in bread grain and dairy =
 products"]).
 bgfact("Croatia","LandBounderies",["Bosnia and =
 Herzegovina","Hungary","Serbia  and Montenegro","Slovenia"]).
@@ -1262,7 +1262,7 @@ bgfact("Denmark","Industries",["food processing","machinery and =
 equipment","textiles and clothing","chemical =
 products","electronics","construction","furniture","shipbuilding"]).
 bgfact("Denmark","Agriculture",["principal =
-meat","dairy","grain","potatoes","rape","sugar beets","self-sufficient =
+meat","dairy","grain","potatoes","rape","sugar beets","cls-sufficient =
 in food production"]).
 bgfact("Djibouti","LandBounderies",["Eritrea","Ethiopia","Somalia"]).
 bgfact("Djibouti","NaturalResources",[]).
@@ -1324,7 +1324,7 @@ mining","textiles","cement","tobacco"]).
 bgfact("Dominican Republic","Agriculture",["sugarcane is  the most =
 important commercial crop","followed by coffee","cotton","cocoa","food =
 rice","beans","potatoes","corn","animal  output - cattle","hogs","dairy =
-products","meat","not self-sufficient  in food"]).
+products","meat","not cls-sufficient  in food"]).
 bgfact("Ecuador","LandBounderies",["Colombia","Peru"]).
 bgfact("Ecuador","NaturalResources",["petroleum","fish","timber"]).
 bgfact("Ecuador","Population",["10677067"]).
@@ -1396,7 +1396,7 @@ processing","beverages","petroleum","nonmetallic =
 products","tobacco","chemicals","textiles","furniture"]).
 bgfact("El =
 Salvador","Agriculture",["corn","rice","beans","oilseeds","beef","dairy =
-products","not self-sufficient in food"]).
+products","not cls-sufficient in food"]).
 bgfact("Equatorial Guinea","LandBounderies",["Cameroon","Gabon"]).
 bgfact("Equatorial =
 Guinea","NaturalResources",["timber","petroleum","small unexploited =
@@ -1560,7 +1560,7 @@ bgfact("Finland","Industries",["metal products","shipbuilding","forestry =
 and wood processing","copper =
 refining","foodstuffs","chemicals","textiles","clothing"]).
 bgfact("Finland","Agriculture",["livestock production","especially dairy =
-cattle","main crops  - cereals","sugar beets","self-sufficient","annual =
+cattle","main crops  - cereals","sugar beets","cls-sufficient","annual =
 fish catch about"]).
 bgfact("France","LandBounderies",["Andorra","Belgium","Germany","Italy","=
 Luxembourg","Monaco","Spain","Switzerland"]).
@@ -1755,7 +1755,7 @@ bgfact("Ghana","ImportPartners",["UK","US","Germany","Japan"]).
 bgfact("Ghana","Industries",["mining","lumbering","light =
 manubgfacturing","aluminum","food processing"]).
 bgfact("Ghana","Agriculture",["coffee","cassava","peanuts","corn","shea =
-nuts","normally self-sufficient in food"]).
+nuts","normally cls-sufficient in food"]).
 bgfact("Gibraltar","LandBounderies",["Spain"]).
 bgfact("Gibraltar","NaturalResources",["negligible"]).
 bgfact("Gibraltar","Population",["31684"]).
@@ -1802,7 +1802,7 @@ processing","textiles","chemicals","metal =
 products","tourism","mining","petroleum"]).
 bgfact("Greece","Agriculture",["including fishing and =
 forestry","principal wheat","corn","barley","sugar =
-beets","olives","tomatoes","wine","tobacco","self-sufficient in food  =
+beets","olives","tomatoes","wine","tobacco","cls-sufficient in food  =
 except meat","dairy products"]).
 bgfact("Greenland","LandBounderies",[]).
 bgfact("Greenland","NaturalResources",["zinc","lead","iron =
@@ -1856,7 +1856,7 @@ bgfact("Guadeloupe","ImportPartners",["France","Italy","FRG","US"]).
 bgfact("Guadeloupe","Industries",["construction","cement","rum","sugar","=
 tourism"]).
 bgfact("Guadeloupe","Agriculture",["bananas","livestock - =
-cattle","pigs","not  self-sufficient in food"]).
+cattle","pigs","not  cls-sufficient in food"]).
 bgfact("Guam","LandBounderies",[]).
 bgfact("Guam","NaturalResources",["fishing"]).
 bgfact("Guam","Population",["149620"]).
@@ -1936,7 +1936,7 @@ mining","light manubgfacturing and  agricultural processing =
 Industries"]).
 bgfact("Guinea","Agriculture",["principal =
 rice","coffee","pineapples","palm kernels","cassava","bananas","sweet =
-potatoes","livestock -  cattle","not self-sufficient in food grains"]).
+potatoes","livestock -  cattle","not cls-sufficient in food grains"]).
 bgfact("Guinea-Bissau","LandBounderies",["Guinea","Senegal"]).
 bgfact("Guinea-Bissau","NaturalResources",["unexploited deposits of =
 petroleum","bauxite","phosphates","fish","timber"]).
@@ -1978,7 +1978,7 @@ Tobago","UK","Italy","Japan"]).
 bgfact("Guyana","Industries",["bauxite mining","sugar","rice =
 milling","timber","fishing","textiles","gold mining"]).
 bgfact("Guyana","Agriculture",["most important sector","not =
-self-sufficient in food","especially  wheat","vegetable oils"]).
+cls-sufficient in food","especially  wheat","vegetable oils"]).
 bgfact("Haiti","LandBounderies",["Dominican Republic"]).
 bgfact("Haiti","NaturalResources",["bauxite"]).
 bgfact("Haiti","Population",["6491450"]).
@@ -2085,7 +2085,7 @@ materials","processed =
 foods","textiles","chemicals","buses","automobiles"]).
 bgfact("Hungary","Agriculture",["including forestry","principal  =
 wheat","corn","sunflowers","potatoes","livestock - =
-hogs","cattle","poultry","self-sufficient in food output"]).
+hogs","cattle","poultry","cls-sufficient in food output"]).
 bgfact("Iceland","LandBounderies",[]).
 bgfact("Iceland","NaturalResources",["fish","hydropower","diatomite"]).
 bgfact("Iceland","Population",["263599"]).
@@ -2189,7 +2189,7 @@ bgfact("Iran","Industries",["petroleum","petrochemicals","textiles","food=
  processing","metal fabricating"]).
 bgfact("Iran","Agriculture",["principal wheat","rice","sugar =
 beets","fruits","nuts","cotton","dairy products","wool","not =
-self-sufficient in food"]).
+cls-sufficient in food"]).
 bgfact("Iraq","LandBounderies",["Iran","Jordan","Kuwait","Saudi  =
 Arabia","Syria","Turkey"]).
 bgfact("Iraq","NaturalResources",["petroleum","natural =
@@ -2212,7 +2212,7 @@ refining","chemicals","textiles","construction  materials","food =
 processing"]).
 bgfact("Iraq","Agriculture",["principal =
 wheat","barley","rice","vegetables","dates","cotton","livestock - =
-cattle","not self-sufficient in  food output"]).
+cattle","not cls-sufficient in  food output"]).
 bgfact("Ireland","LandBounderies",["UK"]).
 bgfact("Ireland","NaturalResources",["zinc","lead","natural =
 gas","petroleum","barite","copper","gypsum","limestone","dolomite","peat"=
@@ -2254,7 +2254,7 @@ bgfact("Israel","Industries",["food processing","diamond cutting and =
 polishing","textiles and apparel","chemicals","metal products","military =
 equipment","transport equipment","electrical equipment","miscellaneous =
 machinery","potash mining","high-technology electronics","tourism"]).
-bgfact("Israel","Agriculture",["largely self-sufficient in food  =
+bgfact("Israel","Agriculture",["largely cls-sufficient in food  =
 production","vegetables","livestock beef","dairy","poultry"]).
 bgfact("Italy","LandBounderies",["Austria","France","Holy See","San =
 Marino","Slovenia","Switzerland"]).
@@ -2301,7 +2301,7 @@ mining","textiles","food processing","light manubgfactures"]).
 bgfact("Jamaica","Agriculture",["accounts for about of GDP","of work =
 force","commercial =
 sugarcane","bananas","coffee","citrus","potatoes","livestock and =
-livestock products include poultry","goats","not self-sufficient in =
+livestock products include poultry","goats","not cls-sufficient in =
 grain","meat"]).
 bgfact("Jan Mayen","LandBounderies",[]).
 bgfact("Jan Mayen","NaturalResources",["none"]).
@@ -2447,7 +2447,7 @@ bgfact("Kiribati","ImportPartners",["Australia","Japan","Fiji","NZ","US"]=
 ).
 bgfact("Kiribati","Industries",["fishing","handicrafts"]).
 bgfact("Kiribati","Agriculture",["food  taro","breadfruit","sweet =
-potatoes","not self-sufficient in  food"]).
+potatoes","not cls-sufficient in  food"]).
 bgfact("Korea, North","LandBounderies",["China","South =
 Korea","Russia"]).
 bgfact("Korea, =
@@ -2473,7 +2473,7 @@ products","electric =
 power","chemicals","mining","metallurgy","textiles","food processing"]).
 bgfact("Korea, North","Agriculture",["principal  =
 rice","corn","potatoes","soybeans","livestock and livestock  =
-cattle","hogs","pork","not self-sufficient in grain"]).
+cattle","hogs","pork","not cls-sufficient in grain"]).
 bgfact("Korea, South","LandBounderies",["North Korea"]).
 bgfact("Korea, =
 South","NaturalResources",["coal","tungsten","graphite","molybdenum","lea=
@@ -2496,7 +2496,7 @@ production","chemicals","shipbuilding","steel","textiles","clothing","foo=
 twear","food processing"]).
 bgfact("Korea, South","Agriculture",["principal rice","root =
 crops","barley","vegetables","livestock and livestock =
-cattle","hogs","chickens","milk","self-sufficient in food","fish  catch =
+cattle","hogs","chickens","milk","cls-sufficient in food","fish  catch =
 of million metric tons","seventh-largest in world"]).
 bgfact("Kuwait","LandBounderies",["Iraq","Saudi Arabia"]).
 bgfact("Kuwait","NaturalResources",["petroleum","fish","shrimp","natural =
@@ -2609,7 +2609,7 @@ processing","textiles","cement","oil =
 refining","chemicals","jewelry","some metal fabricating"]).
 bgfact("Lebanon","Agriculture",["principal citrus  =
 fruits","vegetables","potatoes","olives","tobacco","hemp","sheep","not =
-self-sufficient in grain"]).
+cls-sufficient in grain"]).
 bgfact("Lesotho","LandBounderies",["South Africa"]).
 bgfact("Lesotho","NaturalResources",["water","agricultural and grazing =
 land"]).
@@ -2652,7 +2652,7 @@ processing","construction materials","furniture","palm oil =
 processing","mining"]).
 bgfact("Liberia","Agriculture",["principal =
 rubber","timber","coffee","cocoa","rice","cassava","palm =
-oil","sugarcane","bananas","sheep","not self-sufficient in  =
+oil","sugarcane","bananas","sheep","not cls-sufficient in  =
 food","imports of rice consumption"]).
 bgfact("Libya","LandBounderies",["Algeria","Chad","Egypt","Niger","Sudan"=
 ,"Tunisia"]).
@@ -2772,7 +2772,7 @@ bgfact("Madagascar","ImportPartners",["France","Germany","UK","US"]).
 bgfact("Madagascar","Industries",["agricultural =
 processing","cement","automobile assembly plant","paper","petroleum"]).
 bgfact("Madagascar","Agriculture",["coffee","vanilla","sugarcane","cloves=
-","food rice","cassava","beans","bananas","almost self-sufficient in =
+","food rice","cassava","beans","bananas","almost cls-sufficient in =
 rice"]).
 bgfact("Malawi","LandBounderies",["Mozambique","Tanzania","Zambia"]).
 bgfact("Malawi","NaturalResources",["limestone","unexploited deposits of =
@@ -3105,7 +3105,7 @@ bgfact("Montserrat","ImportPartners",["NA"]).
 bgfact("Montserrat","Industries",["light manubgfacturing - =
 rum","textiles","electronic appliances"]).
 bgfact("Montserrat","Agriculture",["food tomatoes","onions","not =
-self-sufficient in food","especially livestock  products"]).
+cls-sufficient in food","especially livestock  products"]).
 bgfact("Morocco","LandBounderies",["Algeria","Western Sahara"]).
 bgfact("Morocco","NaturalResources",["phosphates","iron =
 ore","manganese","lead","zinc","fish","salt"]).
@@ -3147,7 +3147,7 @@ bgfact("Mozambique","ImportPartners",["US","Western Europe","USSR"]).
 bgfact("Mozambique","Industries",["food","beverages","chemicals","tobacco=
 "]).
 bgfact("Mozambique","Agriculture",["cotton","cashew =
-nuts","sugarcane","tea","corn","rice","not self-sufficient in food"]).
+nuts","sugarcane","tea","corn","rice","not cls-sufficient in food"]).
 bgfact("Namibia","LandBounderies",["Angola","Botswana","South =
 Africa","Zambia"]).
 bgfact("Namibia","NaturalResources",["diamonds","copper","uranium","gold"=
@@ -3171,7 +3171,7 @@ bgfact("Namibia","Industries",["meatpacking","fish processing","dairy =
 products","mining"]).
 bgfact("Namibia","Agriculture",["millet","sorghum","fish  catch =
 potential of over million metric tons not being fulfilled","catch =
-reaching only","not self-sufficient in  food"]).
+reaching only","not cls-sufficient in  food"]).
 bgfact("Nauru","LandBounderies",[]).
 bgfact("Nauru","NaturalResources",["phosphates"]).
 bgfact("Nauru","Population",["10019"]).
@@ -3213,7 +3213,7 @@ rice","jute","sugar","cigarette","textile","carpet","cement","tourism"]).=
 
 bgfact("Nepal","Agriculture",["farm =
 rice","corn","wheat","sugarcane","root crops","milk","not  =
-self-sufficient in food","particularly in drought years"]).
+cls-sufficient in food","particularly in drought years"]).
 bgfact("Netherlands","LandBounderies",["Belgium","Germany"]).
 bgfact("Netherlands","NaturalResources",["natural =
 gas","petroleum","fertile soil"]).
@@ -3253,7 +3253,7 @@ Antilles","ImportPartners",["Venezuela","US","Colombia","Netherlands","Ja=
 pan"]).
 bgfact("Netherlands Antilles","Industries",["tourism"]).
 bgfact("Netherlands Antilles","Agriculture",["chief =
-aloes","sorghum","peanuts","fresh vegetables","not  self-sufficient in =
+aloes","sorghum","peanuts","fresh vegetables","not  cls-sufficient in =
 food"]).
 bgfact("New Caledonia","LandBounderies",[]).
 bgfact("New =
@@ -3272,7 +3272,7 @@ ectrical equipment"]).
 bgfact("New Caledonia","ImportPartners",["France","US","Australia"]).
 bgfact("New Caledonia","Industries",["nickel mining and smelting"]).
 bgfact("New =
-Caledonia","Agriculture",["coffee","corn","wheat","self-sufficient in =
+Caledonia","Agriculture",["coffee","corn","wheat","cls-sufficient in =
 beef"]).
 bgfact("New Zealand","LandBounderies",[]).
 bgfact("New Zealand","NaturalResources",["natural gas","iron =
@@ -3323,7 +3323,7 @@ distribution","beverages","footwear"]).
 bgfact("Nicaragua","Agriculture",["export =
 coffee","bananas","sugarcane","food rice","corn","cassava","citrus =
 fruit","also produces a variety of animal =
-beef","veal","pork","poultry","normally self-sufficient in food"]).
+beef","veal","pork","poultry","normally cls-sufficient in food"]).
 bgfact("Niger","LandBounderies",["Algeria","Benin","Burkina","Chad","Liby=
 a","Mali","Nigeria"]).
 bgfact("Niger","NaturalResources",["uranium","coal","iron =
@@ -3349,7 +3349,7 @@ bgfact("Niger","Industries",["cement","brick","textiles","food =
 processing","chemicals","slaughterhouses","uranium mining began in"]).
 bgfact("Niger","Agriculture",["cowpeas","cotton","food =
 millet","sorghum","cassava","livestock - =
-cattle","sheep","self-sufficient in food except in  drought years"]).
+cattle","sheep","cls-sufficient in food except in  drought years"]).
 bgfact("Nigeria","LandBounderies",["Benin","Cameroon","Chad","Niger"]).
 bgfact("Nigeria","NaturalResources",["petroleum","tin","columbite","iron =
 ore","coal","limestone","lead","zinc","natural gas"]).
@@ -3527,7 +3527,7 @@ processing","beverages","construction materials","clothing","paper =
 products","shrimp"]).
 bgfact("Pakistan","Agriculture",["of GDP","major =
 cotton","wheat","rice","sugarcane","fruits","livestock =
-milk","beef","mutton","self-sufficient in food grain"]).
+milk","beef","mutton","cls-sufficient in food grain"]).
 bgfact("Palmyra Atoll","LandBounderies",[]).
 bgfact("Palmyra Atoll","NaturalResources",["none"]).
 bgfact("Palmyra Atoll","Capital",["none; administered from Washington, =
@@ -3601,7 +3601,7 @@ bgfact("Paraguay","ImportPartners",["Brazil","EC","US","Argentina","Japan=
 bgfact("Paraguay","Industries",["meat packing","oilseed =
 crushing","milling","brewing","textiles","cement","construction"]).
 bgfact("Paraguay","Agriculture",["cotton","sugarcane","wheat","tobacco","=
-cassava","fruits","animal beef","pork","eggs","self-sufficient in most =
+cassava","fruits","animal beef","pork","eggs","cls-sufficient in most =
 foods"]).
 bgfact("Peru","LandBounderies",["Bolivia","Brazil","Chile","Colombia","Ec=
 uador"]).
@@ -3687,7 +3687,7 @@ bgfact("Poland","Industries",["machine building","iron and =
 steel","extractive Industries","chemicals","shipbuilding","food =
 processing","glass","beverages","textiles"]).
 bgfact("Poland","Agriculture",["of  output from private farms","leading =
-European producer of rye","rapeseed","normally self-sufficient in =
+European producer of rye","rapeseed","normally cls-sufficient in =
 food"]).
 bgfact("Portugal","LandBounderies",["Spain"]).
 bgfact("Portugal","NaturalResources",["fish","forests","tungsten","iron =
@@ -3980,7 +3980,7 @@ bgfact("Sao Tome and Principe","Industries",["light =
 construction","shirts","soap","beer","fisheries","shrimp processing"]).
 bgfact("Sao Tome and Principe","Agriculture",["dominant sector of =
 economy","cocoa","coconuts","palm kernels","food =
-bananas","papaya","beans","poultry","not  self-sufficient in food grain =
+bananas","papaya","beans","poultry","not  cls-sufficient in food grain =
 and meat"]).
 bgfact("Saudi =
 Arabia","LandBounderies",["Iraq","Jordan","Kuwait","Oman","Qatar","UAE","=
@@ -4008,7 +4008,7 @@ refining","basic petrochemicals","cement","two small steel-rolling =
 mills","construction","fertilizer","plastics"]).
 bgfact("Saudi Arabia","Agriculture",["accounts for about of =
 GDP","wheat","barley","tomatoes","melons","dates","citrus  =
-fruit","mutton","chickens","eggs","approaching self-sufficiency in  =
+fruit","mutton","chickens","eggs","approaching cls-sufficiency in  =
 food"]).
 bgfact("Senegal","LandBounderies",["The =
 Gambia","Guinea","Guinea-Bissau","Mali","Mauritania"]).
@@ -4242,7 +4242,7 @@ assembly","metalworking","machinery","textile","iron and =
 steel","chemical","fertilizer","foodstuffs"]).
 bgfact("South =
 Africa","Agriculture",["cattle","poultry","sheep","wool","milk","beef","c=
-orn","wheat","sugarcane","fruits","self-sufficient in food"]).
+orn","wheat","sugarcane","fruits","cls-sufficient in food"]).
 bgfact("South Georgia and the South Sandwich =
 Islands","LandBounderies",[]).
 bgfact("South Georgia and the South Sandwich =
@@ -4306,7 +4306,7 @@ rubber","tea","coconuts","clothing","cement","petroleum =
 refining","textiles","tobacco"]).
 bgfact("Sri =
 Lanka","Agriculture",["grains","pulses","oilseeds","roots","tea","rubber"=
-,"animal milk","eggs","hides","not  self-sufficient in rice =
+,"animal milk","eggs","hides","not  cls-sufficient in rice =
 production"]).
 bgfact("Sudan","LandBounderies",["Central African =
 Republic","Chad","Egypt","Eritrea","Ethiopia","Kenya","Libya","Uganda","Z=
@@ -4334,7 +4334,7 @@ ginning","textiles","cement","edible oils","sugar","soap =
 distilling","shoes","petroleum refining"]).
 bgfact("Sudan","Agriculture",["major =
 cotton","oilseeds","sorghum","millet","wheat","gum arabic","marginally =
-self-sufficient in most foods"]).
+cls-sufficient in most foods"]).
 bgfact("Suriname","LandBounderies",["Brazil","French Guiana","Guyana"]).
 bgfact("Suriname","NaturalResources",["timber","hydropower =
 potential","fish","shrimp","bauxite","iron =
@@ -4355,7 +4355,7 @@ Tobago","Brazil"]).
 bgfact("Suriname","Industries",["bauxite mining","alumina and aluminum =
 production","lumbering","food  processing","fishing"]).
 bgfact("Suriname","Agriculture",["palm =
-kernels","coconuts","plantains","peanuts","beef","self-sufficient in =
+kernels","coconuts","plantains","peanuts","beef","cls-sufficient in =
 most foods"]).
 bgfact("Svalbard","LandBounderies",[]).
 bgfact("Svalbard","NaturalResources",["coal","copper","iron =
@@ -4385,7 +4385,7 @@ Africa","Switzerland","UK"]).
 bgfact("Swaziland","Industries",["mining","wood pulp","sugar"]).
 bgfact("Swaziland","Agriculture",["sugarcane","cotton","maize","tobacco",=
 "rice","citrus fruit","sorghum","peanuts","cattle","goats","not =
-self-sufficient in  grain"]).
+cls-sufficient in  grain"]).
 bgfact("Sweden","LandBounderies",["Finland","Norway"]).
 bgfact("Sweden","NaturalResources",["zinc","iron =
 ore","lead","copper","silver","timber","uranium","hydropower  =
@@ -4453,7 +4453,7 @@ Canada"]).
 bgfact("Syria","Industries",["textiles","food =
 processing","beverages","tobacco","phosphate rock mining","petroleum"]).
 bgfact("Syria","Agriculture",["animal  =
-beef","lamb","eggs","poultry","not self-sufficient in grain or  =
+beef","lamb","eggs","poultry","not cls-sufficient in grain or  =
 livestock products"]).
 bgfact("Taiwan","LandBounderies",[]).
 bgfact("Taiwan","NaturalResources",["small deposits of coal","natural =
@@ -4477,7 +4477,7 @@ ing","food processing","plywood","sugar =
 milling","cement","shipbuilding","petroleum refining"]).
 bgfact("Taiwan","Agriculture",["major =
 vegetables","rice","fruit","livestock - hogs","poultry","beef","not =
-self-sufficient  in wheat","soybeans","fish catch increasing","reached =
+cls-sufficient  in wheat","soybeans","fish catch increasing","reached =
 million  metric tons in"]).
 bgfact("Tajikistan","LandBounderies",["Afghanistan","China","Kyrgyzstan",=
 "Uzbekistan"]).
@@ -4528,7 +4528,7 @@ processing","diamond and gold mining","oil =
 refinery","shoes","cement","textiles","wood products","fertilizer"]).
 bgfact("Tanzania","Agriculture",["coffee","sisal","tea","cotton","food =
 corn","wheat","cassava","bananas","fruits","small numbers of =
-cattle","sheep","not self-sufficient in food grain production"]).
+cattle","sheep","not cls-sufficient in food grain production"]).
 bgfact("Thailand","LandBounderies",["Burma","Cambodia","Laos","Malaysia"]=
 ).
 bgfact("Thailand","NaturalResources",["tin","rubber","natural =
@@ -4555,7 +4555,7 @@ manubgfacturing","electric appliances and components","integrated =
 circuits","furniture","world's second-largest  tungsten producer and =
 third-largest tin producer"]).
 bgfact("Thailand","Agriculture",["corn","sugarcane","coconuts","except =
-for wheat","self-sufficient in  food"]).
+for wheat","cls-sufficient in  food"]).
 bgfact("The Former Yugoslav Republic of =
 Macedonia","LandBounderies",["Albania","Bulgaria","Greece","Serbia  and =
 Montenegro"]).
@@ -4696,7 +4696,7 @@ bgfact("Tunisia","Industries",["petroleum","mining","tourism","textiles",=
 "footwear","food","beverages"]).
 bgfact("Tunisia","Agriculture",["export  =
 olives","dates","oranges","sugar beets","wine =
-grapes","poultry","beef","not self-sufficient in food"]).
+grapes","poultry","beef","not cls-sufficient in food"]).
 bgfact("Turkey","LandBounderies",["Armenia","Azerbaijan","Bulgaria","Geor=
 gia","Greece","Iran","Iraq","Syria"]).
 bgfact("Turkey","NaturalResources",["antimony","coal","chromium","mercury=
@@ -4717,7 +4717,7 @@ bgfact("Turkey","Industries",["textiles","food =
 processing","mining","steel","petroleum","construction","lumber","paper"]=
 ).
 bgfact("Turkey","Agriculture",["tobacco","cotton","grain","olives","sugar=
- beets","pulses","citrus  fruit","self-sufficient in food most years"]).
+ beets","pulses","citrus  fruit","cls-sufficient in food most years"]).
 bgfact("Turkmenistan","LandBounderies",["Afghanistan","Iran","Kazakhstan"=
 ,"Uzbekistan"]).
 bgfact("Turkmenistan","NaturalResources",["petroleum","natural =
@@ -4756,7 +4756,7 @@ bgfact("Turks and Caicos =
 Islands","Industries",["fishing","tourism","offshore financial =
 services"]).
 bgfact("Turks and Caicos Islands","Agriculture",["subsistence farming =
-prevails","not self-sufficient in food"]).
+prevails","not cls-sufficient in food"]).
 bgfact("Tuvalu","LandBounderies",[]).
 bgfact("Tuvalu","NaturalResources",["fish"]).
 bgfact("Tuvalu","Population",["9831"]).
@@ -4791,7 +4791,7 @@ bgfact("Uganda","Industries",["sugar","brewing","tobacco","cotton =
 textiles","cement"]).
 bgfact("Uganda","Agriculture",["coffee","tea","cotton","food  =
 cassava","potatoes","corn","millet","livestock beef","goat =
-meat","milk","self-sufficient in food"]).
+meat","milk","cls-sufficient in food"]).
 bgfact("Ukraine","LandBounderies",["Belarus","Hungary","Moldova","Poland"=
 ,"Romania","Russia","Slovakia"]).
 bgfact("Ukraine","NaturalResources",["iron =
@@ -4841,7 +4841,7 @@ bgfact("United Arab =
 Emirates","Industries",["petroleum","fishing","petrochemicals","construct=
 ion materials","some boat  building","handicrafts","pearling"]).
 bgfact("United Arab Emirates","Agriculture",["food  =
-vegetables","watermelons","poultry","eggs","dairy","only self-sufficient =
+vegetables","watermelons","poultry","eggs","dairy","only cls-sufficient =
 in food"]).
 bgfact("United Kingdom","LandBounderies",["Ireland"]).
 bgfact("United Kingdom","NaturalResources",["coal","petroleum","natural =
@@ -4867,7 +4867,7 @@ of production","railroad  equipment","shipbuilding","aircraft","motor =
 vehicles and parts","electronics and communications =
 equipment","metals","chemicals","coal","petroleum","paper and paper =
 products","food processing","textiles","clothing"]).
-bgfact("United Kingdom","Agriculture",["about self-sufficient in food =
+bgfact("United Kingdom","Agriculture",["about cls-sufficient in food =
 and feed needs"]).
 bgfact("United States","LandBounderies",["Canada","Mexico"]).
 bgfact("United =
@@ -4920,7 +4920,7 @@ bgfact("Uruguay","ImportPartners",["Brazil","Argentina","US","Nigeria"]).=
 bgfact("Uruguay","Industries",["meat processing","wool and =
 hides","sugar","textiles","footwear","leather  =
 apparel","tires","cement","fishing","petroleum refining","wine"]).
-bgfact("Uruguay","Agriculture",["wheat","rice","corn","self-sufficient =
+bgfact("Uruguay","Agriculture",["wheat","rice","corn","cls-sufficient =
 in most basic foodstuffs"]).
 bgfact("Uzbekistan","LandBounderies",["Afghanistan","Kazakhstan","Kyrgyzs=
 tan","Tajikistan","Turkmenistan"]).
@@ -5118,7 +5118,7 @@ bgfact("Yemen","ImportPartners",["UAE","Japan","Saudi =
 Arabia","Kuwait","US"]).
 bgfact("Yemen","Industries",["cement"]).
 bgfact("Yemen","Agriculture",["grain","fruits","vegetables","qat","coffee=
-","cotton","dairy","poultry","meat","not self-sufficient in grain"]).
+","cotton","dairy","poultry","meat","not cls-sufficient in grain"]).
 bgfact("Zaire","LandBounderies",["Angola","Burundi","Central African  =
 Republic","Congo","Rwanda","Sudan","Uganda","Zambia"]).
 bgfact("Zaire","NaturalResources",["cobalt","copper","cadmium","petroleum=
@@ -5193,7 +5193,7 @@ footwear","chemicals","foodstuffs","fertilizer","beverage","transportatio=
 n equipment","wood products"]).
 bgfact("Zimbabwe","Agriculture",["of land  area divided =
 into","corn","cotton","tobacco","wheat","coffee","sugarcane","livestock =
-- cattle","sheep","goats","self-sufficient in food"]).
+- cattle","sheep","goats","cls-sufficient in food"]).
 
 
 

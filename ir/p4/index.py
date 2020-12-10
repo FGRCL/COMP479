@@ -21,7 +21,7 @@ def create_index(output_file, max_pages):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog="Concordia.ca indexer", description="crawls www.concordia.ca and creates an inverted index")
-    parser.add_argument('--output', '-o', help="File path for the final index", type=str, default="index/index.pickle")
+    parser.add_argument('--output', '-o', help="File path for the final index", type=str, default="index/index_big.pickle")
     parser.add_argument('--maxpages', '-m', help="The max number of pages to crawl", type=int, default=-1)
     args = parser.parse_args()
 

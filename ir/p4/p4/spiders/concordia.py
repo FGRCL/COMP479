@@ -14,6 +14,13 @@ class Crawler(scrapy.Spider):
     start_urls = [
         'https://www.concordia.ca/'
     ]
+    custom_settings = {
+        # 'CONCURRENT_ITEMS': 8,
+        # 'CONCURRENT_REQUESTS': 8,
+        # 'SCHEDULER_PRIORITY_QUEUE': 'scrapy.pqueues.DownloaderAwarePriorityQueue',
+        # 'REACTOR_THREADPOOL_MAXSIZE': 8
+
+    }
     page_count = 0
     max_pages = -1
     indexer = Indexer()

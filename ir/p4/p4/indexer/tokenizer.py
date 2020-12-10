@@ -1,5 +1,5 @@
 from typing import Generator
-from ir.p4.p4.indexer.token import Token
+from ir.p4.p4.indexer.data.token import Token
 from nltk.tokenize import word_tokenize
 
 
