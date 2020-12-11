@@ -13,7 +13,16 @@
 
 \section{Different Behaviours of Ranking Schemes}
 \section{Issues with the tf ranked postings list}
+No issues complicated issues were encountered while implementing the tf-ranked postings list. To keep the lists ranked during the indexing process we use python ``heapq'' library to create a priority queue that will keep our list sorted throughout the indexing process. The algorithm on page 45 of the 7th slide set was implemented to handle the ranking with a limited number of items. Here is a code snippet showing the implementation
+
+\inputminted[]{python}{snip/tfranked.py}
+
+Note that the negative signs are necessary to turn the min heap into a max heap. For querying, the sorted postings list is retrieved using heapq's ``nsmallest'' method. 
+
+\inputminted[]{python}{snip/tfretrieve.py}
+
 \section{Top 15 return functionality}
 \section{Crawling}
+We used two libraries to handle web crawling and scraping. We opted for ``Scrapy'' as our web crawling framework and ``Beatifulsoup'' as our tool for scraping. Scrapy was a good choice for webscraping as it is usually used to scrapy a single domain, which is our case in this project. 
 
 \end{document}

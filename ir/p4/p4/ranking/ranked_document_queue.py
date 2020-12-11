@@ -9,16 +9,16 @@ class RankedDocumentsQueue:
 
     def insert_posting(self, rank: float, doc_id: str):
         if len(self._queue) < self._max_items:
-            heapq.heappush(self._queue, (-rank, doc_id))
-        elif -rank < self._queue[0][0]:
+            heapq.heappush(self._queue, (rank, doc_id))
+        elif rank > self._queue[0][0]:
             heapq.heappop(self._queue)
-            heapq.heappush(self._queue, (-rank, doc_id))
+            heapq.heappush(self._queue, (rank, doc_id))
 
     def get_document_frequency(self):
         return len(self._queue)
 
     def get_ranked_posting(self) -> List[Tuple[float, str]]:
-        return [(-element[0], element[1]) for element in heapq.nsmallest(self._max_items, self._queue)]
+        return [(element[0], element[1]) for element in heapq.nlargest(self._max_items, self._queue)]
 
     def __iter__(self) -> Tuple[float, str]:
         yield from self.get_ranked_posting()
