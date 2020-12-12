@@ -4,7 +4,7 @@ import sys
 
 from ir.p4.p4.indexer.data.inverted_index import InvertedIndex
 from ir.p4.p4.indexer.tokenizer import tokenize_text
-from ir.p4.p4.ranking.RankingAlgorithmChoice import RankingAlgorithmChoice
+from ir.p4.p4.ranking.ranking_algorithm_choice import RankingAlgorithmChoice
 from ir.p4.p4.ranking.ranking_algorithm import RankingAlgorithm
 
 
@@ -17,8 +17,8 @@ def query(index_file: str, query: str, ranking_algorithm_choice: RankingAlgorith
         
     ranked_documents = ranking.rank(query_tokens, inverted_index)
 
-    for ranked_document in ranked_documents:
-        print(f'{ranked_document[1]}, {ranked_document[0]}')
+    for i, ranked_document in enumerate(ranked_documents):
+        print(f'rank: {i+1} \tscore: {ranked_document[0].__round__(4)}\tdocument:{ranked_document[1]}')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Query a dictionary term')

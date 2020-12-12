@@ -7,7 +7,7 @@ class RankedDocumentsQueue:
         self._queue: List[Tuple[float, str]] = []
         self._max_items: int = max_items
 
-    def insert_posting(self, rank: float, doc_id: str):
+    def insert_document(self, rank: float, doc_id: str):
         if len(self._queue) < self._max_items:
             heapq.heappush(self._queue, (rank, doc_id))
         elif rank > self._queue[0][0]:

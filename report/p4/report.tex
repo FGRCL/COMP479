@@ -13,7 +13,7 @@
 
 \section{Different Behaviours of Ranking Schemes}
 \section{Issues with the tf ranked postings list}
-No issues complicated issues were encountered while implementing the tf-ranked postings list. To keep the lists ranked during the indexing process we use python ``heapq'' library to create a priority queue that will keep our list sorted throughout the indexing process. The algorithm on page 45 of the 7th slide set was implemented to handle the ranking with a limited number of items. Here is a code snippet showing the implementation
+We did not encounter any complicated issues while implementing the tf-ranked postings list. To keep the lists ranked during the indexing process we use python ``heapq'' library to create a priority queue that will keep our list sorted throughout the indexing process. The algorithm on page 45 of the 7th slide set was implemented to handle the ranking with a limited number of items. Here is a code snippet showing the implementation
 
 \inputminted[]{python}{snip/tfranked.py}
 
@@ -22,7 +22,29 @@ Note that the negative signs are necessary to turn the min heap into a max heap.
 \inputminted[]{python}{snip/tfretrieve.py}
 
 \section{Top 15 return functionality}
+Returning the top K results was very similar to ranking the postings list by TF. Again we used the algorithm on page 45 of the 7th slide set to maintain a bounded list only keeping the top k results. The implementation can be seen in the following code snippet.
+ 
+\inputminted[]{python}{snip/topklist.py} 
+
+However, we did encounter issues when deciding which document to rank. As the amount of the documents in the inverted index is large, ranking every document in corpus would be rather resource intensive. Therefore, we decided to take some shortcuts. The functions used to perform ranking are the following,
+
+tf-idf:
+\[ score(q,d) = \sum_{t \in q}^{} tf_{t,d} \cdot log\frac{N}{df_t} \]
+
+bm25:
+\[ score(q,d) = \sum_{t \in q}^{} log\frac{N}{df_t} \cdot \frac{(k_1+1)tf_{t,d}}{k_1((1-b) + b\frac{L_d}{L_{ave}} + tf_{t,d})} \]
+
+As one can see, both scoring methods computes the score of a document based on a sum over all query terms in the document. Therefore, if a document does not contain any terms in the query its score would be 0. For this reason, we have chosen to only ranked the documents that contain one or more of the query terms. After acquiring this list of document, they can be easily ranked using one of the two formulas seen above. The python implementation for this algorithm can be seen in the following snippet.
+
+\inputminted[]{python}{snip/documentsrank.py}
+
+With the postings list limited to 50 posting, this makes the ranking process depend almost uniquely on the length of the query. These techniques reduce the time to process a query something much more acceptable.
 \section{Crawling}
-We used two libraries to handle web crawling and scraping. We opted for ``Scrapy'' as our web crawling framework and ``Beatifulsoup'' as our tool for scraping. Scrapy was a good choice for webscraping as it is usually used to scrapy a single domain, which is our case in this project. 
+We used two libraries to handle web crawling and scraping. We opted for ``Scrapy'' as our web crawling framework and ``Beatifulsoup'' as our tool for scraping. Scrapy was a good choice for webscraping as it is usually used to scrape a single domain, which is our case in this project. 
+
+- parallelization
+- robots.txt
+- non html documents
+
 
 \end{document}

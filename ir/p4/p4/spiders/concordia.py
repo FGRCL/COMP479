@@ -16,9 +16,9 @@ class Crawler(scrapy.Spider):
     ]
     custom_settings = {
         'ROBOTSTXT_OBEY': True,
-        'CONCURRENT_ITEMS': 1000,
-        'CONCURRENT_REQUESTS': 1000,
-        'CONCURRENT_REQUESTS_PER_DOMAIN': 1000,
+        'CONCURRENT_ITEMS': 1,
+        'CONCURRENT_REQUESTS': 1,
+        'CONCURRENT_REQUESTS_PER_DOMAIN': 1,
         'REACTOR_THREADPOOL_MAXSIZE': 10000
     }
     page_count = 0

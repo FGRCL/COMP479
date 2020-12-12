@@ -28,7 +28,7 @@ class RankingAlgorithm(ABC):
             rank = 0
             for term in index[doc_id]:
                 rank += self.score(term.df, term.tf, nb_documents, document_length, average_document_length, 0.5, 1)
-            ranked_documents.insert_posting(rank, doc_id)
+            ranked_documents.insert_document(rank, doc_id)
 
         return ranked_documents.get_ranked_posting()
 
