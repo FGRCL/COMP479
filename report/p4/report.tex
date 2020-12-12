@@ -1,0 +1,106 @@
+\documentclass[]{article}
+
+\usepackage{fullpage}
+\usepackage{minted}
+\usepackage{csquotes}
+\usepackage{listings}
+\usepackage{fancyvrb}
+\usemintedstyle{friendly}
+
+\title{COMP 479 - Project 4}
+\author{François LaBerge}
+
+\begin{document}
+\maketitle
+
+
+\section{Different Behaviours of Ranking Schemes}
+See the separate results file to view the full URLs. We use the naming convetion \mintinline[]{text}{informationNeed_query_rankingAlgorith}, for example the resukts for the first query of this document are int file \mintinline[]{text}{covid_Concordia COVID-19 faculty_tfidf.txt}.
+
+\subsection{Information Need: ``which researchers at Concordia worked on COVID 19-related research?''}
+\subsubsection{Query: ``Concordia COVID-19 faculty''}
+The results of this query are not very efficient at retrieving relevant documents for the information need. It also highlights one of the problem encountered using term frequency in our ranking algorithms. Since ``Concordia'' and ``faculty'' appear very often in the top ranking pages of these queries they overpower the more relevant term of the query ``Covid-19''. For example, the first results for tf-idf contains ``Concordia'' 270 times and the one of bm25 counts 157. Although, we've chosen a value of 0.5 for the k1 parameter of bm25 it does not seem to be enough for such frequent terms.
+% \paragraph{tf-idf}
+% \inputminted[]{text}{results/1_1_tfidf.txt}
+% \paragraph{bm25}
+% \inputminted[]{text}{results/1_1_bm25.txt}
+
+\subsubsection{Query: ``SARS-CoV Concordia faculty''}
+For this query we get the same problems as the previous query since the problems terms, ``Concordia'' and ``faculty'' are still there.
+% \paragraph{tf-idf}
+% \inputminted[]{text}{results/1_2_tfidf.txt}
+% \paragraph{bm25}
+% \inputminted[]{text}{results/1_2_bm25.txt}
+
+\subsubsection{Query: ``Covid-19 research''}
+This query returns results that are much more relevant to the information need than the previous two queries since the results contain information about COVID-19. However, our results are  not as good as the Concordia website's search engine. For this query, the two ranking algorithms return very similar results.
+% \paragraph{tf-idf}
+% \inputminted[]{text}{results/1_3_tfidf.txt}
+% \paragraph{bm25}
+% \inputminted[]{text}{results/1_3_bm25.txt}
+
+
+\subsection{Information Need: ``which departments at Concordia have research in environmental issues, sustainability, energy and water conservation?''}
+
+\subsubsection{Query: ``water management sustainability Concordia''}
+For this query, the BM25 ranking scheme returns results that are much better than the tf-idf results. The BM25 documents are pretty relevant while the tf-idf documents are almost completely irrelevant. 
+% \paragraph{tf-idf}
+% \inputminted[]{text}{results/2_1_tfidf.txt}
+% \paragraph{bm25}
+% \inputminted[]{text}{results/2_1_bm25.txt}
+
+\subsubsection{Query: ``environmental issues sustainability energy water conservation''}
+We get a similar situation here compared to the previous query; BM25 returns much better results. We can probably attribute this difference in perfomance by the two tuning paramters of BM25. The \mintinline{text}{k1} parameter reduces relevancy of terms that are too frequent such as ``Concordia''. The \mintinline{text}{b} paramters reduces relevancy of very long documents, such as the top ranking documents of the  tf-idf results.
+% \paragraph{tf-idf}
+% \inputminted[]{text}{results/2_2_tfidf.txt}
+% \paragraph{bm25}
+% \inputminted[]{text}{results/2_2_bm25.txt}
+
+
+\newpage
+\section{Issues with the tf ranked postings list}
+We did not encounter any complicated issues while implementing the tf-ranked postings list. To keep the lists ranked during the indexing process we use python ``heapq'' library to create a priority queue that will keep our list sorted throughout the indexing process. The algorithm on page 45 of the 7th slide set was implemented to handle the ranking with a limited number of items. Here is a code snippet showing the implementation
+
+\inputminted[]{python}{snip/tfranked.py}
+
+Note that the negative signs are necessary to turn the min heap into a max heap. For querying, the sorted postings list is retrieved using heapq's ``nsmallest'' method. 
+
+\inputminted[]{python}{snip/tfretrieve.py}
+
+\newpage
+\section{Top 15 return functionality}
+Returning the top K results was very similar to ranking the postings list by TF. Again we used the algorithm on page 45 of the 7th slide set to maintain a bounded list only keeping the top k results. The implementation can be seen in the following code snippet.
+ 
+\inputminted[]{python}{snip/topklist.py} 
+
+However, we did encounter issues when deciding which document to rank. As the amount of the documents in the inverted index is large, ranking every document in corpus would be rather resource intensive. Therefore, we decided to take some shortcuts. The functions used to perform ranking are the following,
+
+tf-idf:
+\[ score(q,d) = \sum_{t \in q}^{} tf_{t,d} \cdot log\frac{N}{df_t} \]
+
+bm25:
+\[ score(q,d) = \sum_{t \in q}^{} log\frac{N}{df_t} \cdot \frac{(k_1+1)tf_{t,d}}{k_1((1-b) + b\frac{L_d}{L_{ave}} + tf_{t,d})} \]
+
+As one can see, both scoring methods computes the score of a document based on a sum over all query terms in the document. Therefore, if a document does not contain any terms in the query its score would be 0. For this reason, we have chosen to only ranked the documents that contain one or more of the query terms. After acquiring this list of document, they can be easily ranked using one of the two formulas seen above. The python implementation for this algorithm can be seen in the following snippet.
+
+\inputminted[]{python}{snip/documentsrank.py}
+
+With the postings list limited to 50 posting, this makes the ranking process depend almost uniquely on the length of the query. These techniques reduce the time to process a query something much more acceptable.
+
+\newpage
+\section{Crawling}
+We used two libraries to handle web crawling and scraping. We opted for ``Scrapy'' as our web crawling framework and ``Beatifulsoup'' as our tool for scraping. Scrapy was a good choice for webscraping as it is usually used to scrape a single domain, which is our case in this project. 
+
+\paragraph{}
+The crawling and scraping process is rather easy with Scrapy. By defining the \mintinline{python}{start_urls} variable of our Scrapy spider, the spider will start its crawling at with those URLs. In our case, we only specified ``https://www.concordia.ca/'' in \mintinline{python}{start_urls}. Behind the scenes, Scrapy will make the web request to the URL and pass the response body to the \mintinline{python}{parse(self, response, **kwargs)} method of our spider. From there we use Beatifulsoup to parse the content of that web request, allowing us to easily extract the text of the page and the URLs from the page to continue crawling. Beatifulsoup allows us to easily get the URLs by grabbing the \mintinline{html}{a} attribute of all \mintinline{html}{href} tags. In our case, since we did not want to crawl beyond the ``wwww.concordia.ca'' domain, we only grabbed link that began with ``/'', which indicates a link to the current domain. Those URLs are then yield by the \mintinline{python}{parse(self, response, **kwargs)} method for Scrapy to handle the web requests.
+
+\paragraph{}
+Adding the robot exclusion standard to our spider was very easy since Scrapy has a built-in feature for that. Although the option is disabled by default, we can force a Scrapy spider to obey robots.txt by adding the key-value pair \mintinline{python}{'ROBOTSTXT_OBEY': True,} to the \mintinline{python}{custom_settings} class variable of our spider.
+
+\paragraph{}
+We did encounter some limitations of the library we chose. For instance, in an attempt to increase the throughput of the spider, we made an attempt to use multithreading to allow the processing of multiple web pages at once. However, after some manual testing, we found out that our implementation did not improve the performance of our spider. After some research, we discovered that Scrapy was singly threaded. Therefore, a possible hypothesis to explain this phenomenon is that the time complexity associated with making the web requests is magnitudes higher than the time complexity of parsing the documents in adding them to the inverted index. This would indicate that the process spend most of its time making web requests on a single thread and all advantages of multi-threading are rendering insignificant by this difference in time complexity. Regardless, we have changed the Spider settings \mintinline{python}{'CONCURRENT_ITEMS'}, \mintinline{python}{'CONCURRENT_REQUESTS'}, and \mintinline{python}{'CONCURRENT_REQUESTS_PER_DOMAIN'} to a value of 1, because it seems to provide the least fluctuations in CPU usage.
+
+\paragraph{}
+We also encountered some problems with our spider when encountering a specific type of webpage. In a  few instances, our spider requested pages that were not HTML document, but ``.doc''. Those documents proved to be extremely long to be parsed by Beatifulsoup. Those documents reduced the efficiency of our we should consider detecting and ignoring those pages altogether.
+
+\end{document}

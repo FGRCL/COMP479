@@ -1,0 +1,15 @@
+rank: 1 score: 35.585274054 document:https://www.concordia.ca/students/success/advocacy.html
+rank: 2 score: 33.5444316162 document:https://www.concordia.ca/cunews/main/stories/2020/05/21/concordia-celebrates-the-many-accomplishments-of-this-years-co-op-students.html
+rank: 3 score: 33.2940095606 document:https://www.concordia.ca/sgs/new-graduate-students.html
+rank: 4 score: 32.0110942721 document:https://www.concordia.ca/social.html
+rank: 5 score: 30.7617340623 document:https://www.concordia.ca/
+rank: 6 score: 30.3470811589 document:https://www.concordia.ca/academics/co-op/news.html
+rank: 7 score: 29.6553872472 document:https://www.concordia.ca/web/privacy.html
+rank: 8 score: 29.3391297387 document:https://www.concordia.ca/news/stories/2018/07/16/nserc-commits-1-65m-for-synthetic-biology-research-and-training-at-concordia.html
+rank: 9 score: 28.0392061289 document:https://www.concordia.ca/news/stories/2019/09/24/explore-the-many-ways-health-matters-at-concordias-4th-space.html
+rank: 10 score: 20.3387268572 document:https://www.concordia.ca/fr/web/confidentialite.html
+rank: 11 score: 20.2759456566 document:https://www.concordia.ca/fr/web.html
+rank: 12 score: 20.2605512223 document:https://www.concordia.ca/fr/international.html
+rank: 13 score: 20.2349793624 document:https://www.concordia.ca/admissions/questions/questions-agent-consultant.html
+rank: 14 score: 20.2307345421 document:https://www.concordia.ca/web/feedback-forms.html?utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 15 score: 20.2307345421 document:https://www.concordia.ca/web/feedback-forms.html

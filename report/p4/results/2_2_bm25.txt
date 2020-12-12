@@ -1,0 +1,15 @@
+rank: 1 	score: 44.2093387507	document:https://www.concordia.ca/cunews/main/stories/2015/11/18/aerospace-innovations-for-greener-sustainable-air-travel.html?utm_source=redirect&utm_campaign=provost-lp-old&utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 2 	score: 41.6134305709	document:https://www.concordia.ca/cunews/main/stories/2015/04/15/concordia-leader-in-sustainable-buildings-leed.html
+rank: 3 	score: 41.0429718655	document:https://www.concordia.ca/artsci/polisci/wssr/all-guest-lecturers/davidmiller.html?utm_source=redirect&utm_campaign=provost-lp-old&utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 4 	score: 39.4739171899	document:https://www.concordia.ca/cunews/main/stories/2014/01/29/shaping-curriculumforamoresustainableworld.html
+rank: 5 	score: 39.3092136501	document:https://www.concordia.ca/cunews/main/stories/2014/05/15/concordia-mcgilldewharvestingconcepttriumphsinshellideas360susta.html?utm_source=redirect&utm_campaign=roger-cote
+rank: 6 	score: 39.3082297062	document:https://www.concordia.ca/news/stories/2019/04/17/meet-concordia-s-newest-cities-researchers.html?utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 7 	score: 38.2315376774	document:https://www.concordia.ca/artsci/polisci/wssr/all-guest-lecturers/christurner.html?utm_source=redirect&utm_campaign=provost-lp-old&utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 8 	score: 36.7667436932	document:https://www.concordia.ca/cunews/main/stories/2014/03/25/the-5-000-strongconferencesupportedbysustainability.html
+rank: 9 	score: 35.9760621204	document:https://www.concordia.ca/news/stories/2020/09/01/a-green-recovery-does-not-need-capitalism-to-thrive-says-concordia-researcher.html?utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 10 	score: 33.6954903154	document:https://www.concordia.ca/about/sustainability/sustainability-initiatives/buildings-copy.html?utm_source=redirect&utm_campaign=roger-cote
+rank: 11 	score: 31.6014023352	document:https://www.concordia.ca/cunews/main/stories/2013/11/27/why-the-future-ofsyntheticbiologywillbeinterdisciplinary.html?utm_source=redirect&utm_campaign=provost-lp-old&utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 12 	score: 30.8452486817	document:https://www.concordia.ca/academics/graduate/calendar/current/encs/engineering-courses.html
+rank: 13 	score: 30.1707696975	document:https://www.concordia.ca/cunews/main/stories/2014/03/06/come-celebrate-concordiassustainabilitychampions.html
+rank: 14 	score: 30.1293729078	document:https://www.concordia.ca/cunews/main/stories/2020/09/04/new-field-research-facility-will-provide-key-data-for-buildings-of-the-future.html?utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 15 	score: 29.4629414726	document:https://www.concordia.ca/cunews/main/stories/2014/02/19/-students-want-moresustainability.html?utm_source=redirect&utm_campaign=roger-cote
