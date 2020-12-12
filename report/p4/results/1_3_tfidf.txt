@@ -1,0 +1,15 @@
+rank: 1 	score: 260.2025254426	document:https://www.concordia.ca/coronavirus/faculty-staff.html?utm_source=redirect&utm_campaign=research.html&utm_source=redirect&utm_campaign=mix-it-up.html&utm_source=redirect&utm_campaign=cce/ielts
+rank: 2 	score: 42.1950041258	document:https://www.concordia.ca/cunews/offices/advancement/2020/09/28/that-human-connection-is-everything.html?utm_source=redirect&utm_campaign=roger-cote
+rank: 3 	score: 28.1300027506	document:https://www.concordia.ca/news/stories/2020/09/17/flying-less-concordia-encourages-academics-to-reduce-their-carbon-footprint.html?utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 4 	score: 28.1300027506	document:https://www.concordia.ca/cunews/main/stories/2020/04/23/concordia-launches-cu-at-home-to-help-move-from-isolation-to-connection.html?utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 5 	score: 21.0975020629	document:https://www.concordia.ca/fr/actualites/nouvelles/2020/09/17/flying-less-concordia-encourage-les-universitaires-a-reduire-leur-empreinte-carbone.html?utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 6 	score: 21.0975020629	document:https://www.concordia.ca/cunews/main/stories/2020/08/24/concordia-faculty-and-staff-health-benefits-now-include-telemedicine.html?utm_source=redirect&utm_campaign=roger-cote
+rank: 7 	score: 14.0650013753	document:https://www.concordia.ca/offices/ombuds.html
+rank: 8 	score: 14.0650013753	document:https://www.concordia.ca/news/stories/2020/11/16/concordia-launches-the-next-generation-cities-institute.html?utm_source=redirect&utm_campaign=provost-lp-old&utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 9 	score: 14.0650013753	document:https://www.concordia.ca/news/stories/2020/11/16/concordia-launches-the-next-generation-cities-institute.html
+rank: 10 	score: 14.0650013753	document:https://www.concordia.ca/fr/bureaux/ombudsman.html
+rank: 11 	score: 14.0650013753	document:https://www.concordia.ca/cunews/offices/advancement/2020/05/21/married-grads-boost-co-op-students-with-1000-emerging-leaders-award.html
+rank: 12 	score: 14.0650013753	document:https://www.concordia.ca/cunews/main/stories/2020/04/14/how-to-stay-busy-and-sane-during-isolation.html?utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 13 	score: 14.0650013753	document:https://www.concordia.ca/alumni-friends/giving-to-concordia/fundone/past-projects.html?utm_source=redirect&utm_campaign=roger-cote
+rank: 14 	score: 7.0325006876	document:https://www.concordia.ca/admissions/questions.html?utm_source=redirect&utm_campaign=get-your-hands-dirty.html
+rank: 15 	score: 7.0325006876	document:https://www.concordia.ca/admissions/questions.html
